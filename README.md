@@ -41,17 +41,17 @@ A continuación te presentaremos los requerimientos que se tomarán en cuenta pa
 
 Tenemos 5 categorías a calificar:
 
-### Interfaz de Usuario (UI) - 15 puntos
+### Interfaz de Usuario (UI) - 12 puntos
 
 | Requerimiento                                                                          | Valor (puntaje) |
 | :------------------------------------------------------------------------------------- | :-------------: |
-| El proyecto ha sido realizado con Tailwind CSS.                                        |        4        |
-| Instaló Tailwind CSS por medio de CLI.                                                 |        4        |
-| La interfaz del usuario (UI) tiene el logo de la universidad.                          |        4        |
+| El proyecto ha sido realizado con Tailwind CSS.                                        |        3        |
+| Instaló Tailwind CSS por medio de CLI.                                                 |        3        |
+| La interfaz del usuario (UI) tiene el logo de la universidad.                          |        3        |
 | Respetar los colores del logo de la universidad o buscar otros que combinen con estos. |        3        |
-| Total                                                                                  |    15 puntos    |
+| Total                                                                                  |    12 puntos    |
 
-### Rol: Admin - 50 puntos
+### Rol: Admin - 49 puntos
 
 | Requerimiento                             | Valor (puntaje) |
 | :---------------------------------------- | :-------------: |
@@ -68,8 +68,8 @@ Tenemos 5 categorías a calificar:
 | Actualizar materias (CRUD).               |        4        |
 | Eliminar materias (CRUD).                 |        3        |
 | Relacionar un maestro a un curso (o más). |        4        |
-| Cambiar el rol de cada usuario.           |        4        |
-| Total                                     |    50 puntos    |
+| Cambiar el rol de cada usuario.           |        3        |
+| Total                                     |    49 puntos    |
 
 ### Rol: Maestro - 8 puntos
 
@@ -86,23 +86,24 @@ Tenemos 5 categorías a calificar:
 | Ver y cambiar las clases en las que está registrado. |        4        |
 | Total                                                |    4 puntos     |
 
-### Estructura del proyecto - 23 puntos
+### Estructura del proyecto - 27 puntos
 
 | Requerimiento                                                      | Valor (puntaje) |
 | :----------------------------------------------------------------- | :-------------: |
-| MVC y POO.                                                         |       20        |
-| El archivo index.php se encuentra en la carpeta raíz del proyecto. |        3        |
-| Total                                                              |    23 puntos    |
+| MVC y POO.                                                         |       15        |
+| Usó llaves foráneas en la base de datos                            |       10        |
+| El archivo index.php se encuentra en la carpeta raíz del proyecto. |        2        |
+| Total                                                              |    27 puntos    |
 
 ## ACUMULADO DE CATEGORÍAS
 
 | Categoría                | Valor (puntaje) |
 | :----------------------- | :-------------: |
-| Interfaz de Usuario (UI) |       15        |
-| ADMIN                    |       50        |
-| MAESTRO                  |        8        |
-| ALUMNO                   |        4        |
-| ESTRUCTURA               |       23        |
+| Interfaz de Usuario (UI) |       12        |
+| Rol: Admin               |       49        |
+| Rol: Maestro             |        8        |
+| Rol: Alumno              |        4        |
+| Estructura del proyecto  |       27        |
 | Total                    |   100 puntos    |
 
 ## Consideraciones OPCIONALES que suman puntos:
