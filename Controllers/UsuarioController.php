@@ -17,7 +17,7 @@ class UsuarioController
     {
         $usuarios= $this->model->all();
 
-        include $_SERVER["DOCUMENT_ROOT"] . "/views/usuarios/read.php";
+        include $_SERVER["DOCUMENT_ROOT"] . "../views/usuarios/read.php";
     }
 
     /**
@@ -25,7 +25,7 @@ class UsuarioController
      */
     public function create()
     {
-        include $_SERVER["DOCUMENT_ROOT"] . "/views/usuarios/create.php";
+        include $_SERVER["DOCUMENT_ROOT"] . "../views/usuarios/create.php";
     }
 
     /**
@@ -35,7 +35,7 @@ class UsuarioController
     {
         $usuarios = $this->model->find($id);
 
-        include $_SERVER["DOCUMENT_ROOT"] . "/views/usuarios/edit.php";
+        include $_SERVER["DOCUMENT_ROOT"] . "../views/usuarios/edit.php";
     }
 
     /**

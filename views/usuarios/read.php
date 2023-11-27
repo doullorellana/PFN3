@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuarios</title>
+
+    <!-- CSS TailWindcss CLI -->
+    <link href="../css/output.css" rel="stylesheet">
+
+    <title>University | Funval</title>
 </head>
 
 <body>
@@ -19,6 +23,8 @@
                 <th>Password</th>
                 <th>Nombre</th>
                 <th>Email</th>
+                <th>Rol</th>
+                <th>Estatus</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -26,13 +32,28 @@
         <tbody>
             <?php
             foreach ($usuarios as $usuario) {
+                switch ($usuario["rol_id"]) {
+                    case 1:
+                        $rol = "Admin";
+                        break;
+                    case 2:
+                        $rol = "Maestro";
+                        break;
+                    case 3:
+                        $rol = "Alumno";
+                        break;
+                };
+                $status = $usuario["estatus"] == 1 ? "Activo" : "Inactivo";
+
             ?>
                 <tr>
                     <td><?= $usuario["id"] ?></td>
-                    <td><?= $usuario["usuario"] ?></td>
+                    <td><?= $usuario["username"] ?></td>
                     <td><?= $usuario["password"] ?></td>
                     <td><?= $usuario["name"] ?></td>
                     <td><?= $usuario["email"] ?></td>
+                    <td><?= $rol ?></td>
+                    <td><?= $status ?></td>
                     <td>
                         <a href="/usuarios/edit?id=<?= $usuario["id"] ?>">Editar</a>
                         <form action="/usuarios/delete" method="post" style="display: inline;">
@@ -46,6 +67,9 @@
             ?>
         </tbody>
     </table>
+
+    
+
 </body>
 
 </html>

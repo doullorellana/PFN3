@@ -109,5 +109,22 @@ class Model
     {
         $this->db->query("delete from {$this->table} where id = $id");
     }
+
+    /**
+     * Método para encontrar un dato utilizando la columna, operador y valor.
+     *
+     * @param string $column Columna de la tabla en la que se quiere buscar.
+     * @param string $operator Operador para hacer la comparación. Ej: =, !=, <, >, etc.
+     * @param string $value Valor a encontrar en la columna.
+     * 
+     * @return array Data encontrada.
+     */
+    public function where($column, $operator, $value)
+    {
+        $res = $this->db->query("select * from {$this->table} where $column $operator '$value'");
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+    }
 }
 ?>

@@ -8,21 +8,21 @@
     <!-- CSS TailWindcss CLI -->
     <link href="../css/output.css" rel="stylesheet">
 
-    <title>University | Doull</title>
+    <title>University | Funval</title>
 </head>
 
 <body>
     <?php
-    header("Location: ../src/views/login.php");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/LoginController.php");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/HomeController.php");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/UsuarioController.php");
 
     // ENRUTADOR
-    require_once "./controllers/HomeController.php";
-    require_once "./controllers/UsuarioController.php";
-
+    $loginController = new LoginController();
     $homeController = new HomeController();
     $usuarioController = new UsuarioController();
 
-    // Dividimos la ruta por el signo "?" para no leer los query params. Ejem: /usuarios?id=1
+    // Dividimos la ruta por el signo "?" para no leer los query params. Ejem: /clientes?id=1
     $route = explode("?", $_SERVER["REQUEST_URI"]);
 
     $method = $_SERVER["REQUEST_METHOD"];
@@ -30,15 +30,19 @@
 
     if ($method === "POST") {
         switch ($route[0]) {
-            case '/views/usuarios/delete':
+            case '/login':
+                $loginController->login($_POST["email"]);
+                break;
+
+            case '/usuarios/delete':
                 $usuarioController->delete($_POST["id"]);
                 break;
 
-            case '/views/usuarios/create':
+            case '/usuarios/create':
                 $usuarioController->store($_POST);
                 break;
 
-            case '/views/usuarios/update':
+            case '/usuarios/update':
                 $usuarioController->update($_POST);
                 break;
 
@@ -51,18 +55,21 @@
     if ($method === "GET") {
         switch ($route[0]) {
             case '/index.php':
-                $homeController->index();
+                $loginController->index();
+                break;
+            case '/dashboard':
+                $loginController->dashboard();
                 break;
 
-            case '/views/usuarios':
+            case '/usuarios':
                 $usuarioController->index();
                 break;
 
-            case '/views/usuarios/edit':
+            case '/usuarios/edit':
                 $usuarioController->edit($_GET["id"]);
                 break;
 
-            case '/views/usuarios/create':
+            case '/usuarios/create':
                 $usuarioController->create();
                 break;
 
@@ -72,7 +79,6 @@
         }
     }
     ?>
-
 </body>
 
 </html>
