@@ -34,6 +34,19 @@ class Model
     }
 
     /**
+     * Método para todos los registros de la tabla.
+     *
+     * @return array Arreglo con todos los registro de la tabla.
+     */
+    public function all_users_count()
+    {
+        $res = $this->db->query("select count(*) from usuarios");
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+    }
+
+    /**
      * Método para obtener un registro por su id.
      *
      * @param integer $id Id de la fila (recurso) a buscar.
@@ -123,6 +136,35 @@ class Model
     {
         $res = $this->db->query("select * from {$this->table} where $column $operator '$value'");
         $data = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+    }
+
+     /**
+     * Método para encontrar un dato utilizando la columna, operador y valor.
+     *
+     * @param string $column Columna de la tabla en la que se quiere buscar.
+     * @param string $operator Operador para hacer la comparación. Ej: =, !=, <, >, etc.
+     * @param string $value Valor a encontrar en la columna.
+     * 
+     * @return array Data encontrada.
+     */
+    public function whereLogin($columnA, $columnB, $operator, $value, $pass)
+    {
+        $query ="select m.id, m.nombre, m.apellido, m.email, m.password, r.rol from usuarios u
+        inner join maestros m on u.id = m.usuario_id
+        inner join roles r on u.rol_id = r.id
+        where $columnA $operator '$value' and $columnB $operator '$pass'
+        union
+        select a.id, a.nombre, a.apellido, a.email, a.password, ro.rol from usuarios us
+        inner join alumnos a on us.id = a.usuario_id
+        inner join roles ro on us.rol_id = ro.id
+        where $columnA $operator '$value' and $columnB $operator '$pass'";
+        //var_dump($query);
+        $res = $this->db->query("$query");
+        //var_dump($res);
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+        //var_dump($data);
 
         return $data;
     }

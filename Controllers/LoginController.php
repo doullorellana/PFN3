@@ -18,9 +18,10 @@ class LoginController
         include $_SERVER["DOCUMENT_ROOT"] . "../views/login.php";
     }
 
-    public function login($correo)
+    public function login($correo, $pass)
     {
-        $usuario = $this->model->where("email", "=", $correo);
+        //var_dump($correo, $pass);
+        $usuario = $this->model->whereLogin("email","password", "=", $correo, $pass);
 
         if (count($usuario) === 1) {
 
@@ -45,6 +46,7 @@ class LoginController
             header("Location: /dashboard");
         } else {
             echo "Credenciales incorrectas";
+            //include $_SERVER["DOCUMENT_ROOT"] . "../views/modal.php";
         }
     }
 

@@ -31,7 +31,7 @@
     if ($method === "POST") {
         switch ($route[0]) {
             case '/login':
-                $loginController->login($_POST["email"]);
+                $loginController->login($_POST["email"], $_POST["password"]);
                 break;
 
             case '/usuarios/delete':
