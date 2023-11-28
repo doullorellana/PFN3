@@ -95,6 +95,9 @@ Tenemos 5 categorías a calificar:
 | El archivo index.php se encuentra en la carpeta raíz del proyecto. |        2        |
 | Total                                                              |    27 puntos    |
 
+### Diagrama ER de la BDD
+![DiagramaER.png](./assets/DiagramaER.png)
+
 ## ACUMULADO DE CATEGORÍAS
 
 | Categoría                | Valor (puntaje) |
