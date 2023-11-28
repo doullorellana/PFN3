@@ -47,6 +47,51 @@ class Model
     }
 
     /**
+     * Método para todos los usuarios ADMIN de la tabla.
+     *
+     * @return array Arreglo con todos los registro de la tabla.
+     */
+    public function all_users_admin()
+    {
+        $res = $this->db->query("select count(*) from usuarios u
+        inner join roles r on u.rol_id = r.id
+        where r.rol = 'Admin'");
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+    }
+
+    /**
+     * Método para todos los usuarios ADMIN de la tabla.
+     *
+     * @return array Arreglo con todos los registro de la tabla.
+     */
+    public function all_users_student()
+    {
+        $res = $this->db->query("select count(*) from usuarios u
+        inner join roles r on u.rol_id = r.id
+        where r.rol = 'Alumno'");
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+    }
+
+    /**
+     * Método para todos los usuarios ADMIN de la tabla.
+     *
+     * @return array Arreglo con todos los registro de la tabla.
+     */
+    public function all_users_teacher()
+    {
+        $res = $this->db->query("select count(*) from usuarios u
+        inner join roles r on u.rol_id = r.id
+        where r.rol = 'Maestro'");
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+    }
+
+    /**
      * Método para obtener un registro por su id.
      *
      * @param integer $id Id de la fila (recurso) a buscar.
@@ -151,12 +196,12 @@ class Model
      */
     public function whereLogin($columnA, $columnB, $operator, $value, $pass)
     {
-        $query ="select m.id, m.nombre, m.apellido, m.email, m.password, r.rol from usuarios u
+        $query ="select m.id, m.nombre, m.apellido, m.email, m.password, r.rol, u.rol_id from usuarios u
         inner join maestros m on u.id = m.usuario_id
         inner join roles r on u.rol_id = r.id
         where $columnA $operator '$value' and $columnB $operator '$pass'
         union
-        select a.id, a.nombre, a.apellido, a.email, a.password, ro.rol from usuarios us
+        select a.id, a.nombre, a.apellido, a.email, a.password, ro.rol, us.rol_id from usuarios us
         inner join alumnos a on us.id = a.usuario_id
         inner join roles ro on us.rol_id = ro.id
         where $columnA $operator '$value' and $columnB $operator '$pass'";

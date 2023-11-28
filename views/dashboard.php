@@ -16,19 +16,23 @@
 <body>
     <?php
     session_start();
-    $rol = $_SESSION["user"]["rol_id"];
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/models/Model.php";
 
-    if ($rol == 1) {
-        echo "<h2>Bienvenido, admin</h2>";
-    }
+    // Variables de calculo para colocar en CARDS del DashBoard
+    $totalUser = $this->model->all_users_count();
+    //var_dump($totalUser[0]["count(*)"]);
+    $totalAdmin = $this->model->all_users_admin();
+    $totalTeacher = $this->model->all_users_teacher();
+    $totalStudent = $this->model->all_users_student();
 
-    if ($rol == 2) {
-        echo "<h2>Bienvenido, maestro</h2>";
-    }
+    $pors_Admin = (floatval(strval($totalAdmin[0]["count(*)"]))  /  floatval(strval($totalUser[0]["count(*)"])))  *  100;
+    $pors_Teacher = (floatval(strval($totalTeacher[0]["count(*)"]))  /  floatval(strval($totalUser[0]["count(*)"])))  *  100;
+    $pors_Student = (floatval(strval($totalStudent[0]["count(*)"]))  /  floatval(strval($totalUser[0]["count(*)"])))  *  100;
 
-    if ($rol == 3) {
-        echo "<h2>Bienvenido, alumno</h2>";
-    }
+    //var_dump((floatval(strval($totalStudent[0]["count(*)"]))  /  floatval(strval($totalUser[0]["count(*)"])))  *  100);
+    //var_dump($pors_Admin * 1000);
+    $rol = $_SESSION["user"]["rol"];
+    $user = $_SESSION["user"]["nombre"];
     ?>
 
 
@@ -47,7 +51,7 @@
                     <div class="flex justify-center">
                         <div class="">
                             <img class="hidden h-24 w-24 rounded-full sm:block object-cover mr-2 border-4 border-green-400" src="../assets/logo.jpg" alt="">
-                            <p class="font-bold text-base  text-gray-400 pt-2 text-center w-24">Admin</p>
+                            <p class="font-bold text-base  text-gray-400 pt-2 text-center w-24"><?php echo $rol ?></p>
                         </div>
                     </div>
                     <div>
@@ -376,13 +380,13 @@
                         <div class="grid grid-cols-12 col-span-12 gap-6 xxl:col-span-9">
                             <div class="col-span-12 mt-8">
                                 <div class="flex items-center h-10 intro-y">
-                                    <h2 class="mr-5 text-lg font-medium truncate">Dashboard</h2>
+                                    <h2 class="mr-5 text-lg font-medium truncate">Dashboard :: <?php echo $rol ?> :: Hola <?php echo $user ?></h2>
                                 </div>
                                 <div class="grid grid-cols-12 gap-6 mt-5">
                                     <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white" href="#">
                                         <div class="p-5">
                                             <div class="flex justify-between">
-                                                <svg width="48px" height="48px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="50px" height="50px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                                     <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                                                     <g id="SVGRepo_iconCarrier">
@@ -395,12 +399,12 @@
                                                 </svg>
 
                                                 <div class="bg-green-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                                    <span class="flex items-center">30%</span>
+                                                    <span class="flex items-center">100%</span>
                                                 </div>
                                             </div>
                                             <div class="ml-2 w-full flex-1">
                                                 <div>
-                                                    <div class="mt-3 text-3xl font-bold leading-8">4.510</div>
+                                                    <div class="mt-3 text-3xl font-bold leading-8"><?php echo strval($totalUser[0]["count(*)"]) ?></div>
 
                                                     <div class="mt-1 text-base text-gray-600">Total Usuarios</div>
                                                 </div>
@@ -410,16 +414,23 @@
                                     <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white" href="#">
                                         <div class="p-5">
                                             <div class="flex justify-between">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                                <svg fill="#F6E05E" height="48px" width="48px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" stroke="#F6E05E" stroke-width="0.00024000000000000003">
+                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                    <g id="SVGRepo_iconCarrier">
+                                                        <g id="user-admin">
+                                                            <path d="M22.3,16.7l1.4-1.4L20,11.6l-5.8,5.8c-0.5-0.3-1.1-0.4-1.7-0.4C10.6,17,9,18.6,9,20.5s1.6,3.5,3.5,3.5s3.5-1.6,3.5-3.5 c0-0.6-0.2-1.2-0.4-1.7l1.9-1.9l2.3,2.3l1.4-1.4l-2.3-2.3l1.1-1.1L22.3,16.7z M12.5,22c-0.8,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5 s1.5,0.7,1.5,1.5S13.3,22,12.5,22z"></path>
+                                                            <path d="M2,19c0-3.9,3.1-7,7-7c2,0,3.9,0.9,5.3,2.4l1.5-1.3c-0.9-1-1.9-1.8-3.1-2.3C14.1,9.7,15,7.9,15,6c0-3.3-2.7-6-6-6 S3,2.7,3,6c0,1.9,0.9,3.7,2.4,4.8C2.2,12.2,0,15.3,0,19v5h8v-2H2V19z M5,6c0-2.2,1.8-4,4-4s4,1.8,4,4s-1.8,4-4,4S5,8.2,5,6z"></path>
+                                                        </g>
+                                                    </g>
                                                 </svg>
                                                 <div class="bg-red-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                                    <span class="flex items-center">30%</span>
+                                                    <span class="flex items-center"><?php echo $pors_Admin ?>%</span>
                                                 </div>
                                             </div>
                                             <div class="ml-2 w-full flex-1">
                                                 <div>
-                                                    <div class="mt-3 text-3xl font-bold leading-8">4.510</div>
+                                                    <div class="mt-3 text-3xl font-bold leading-8"><?php echo strval($totalAdmin[0]["count(*)"]) ?></div>
 
                                                     <div class="mt-1 text-base text-gray-600">Total Administradores</div>
                                                 </div>
@@ -429,17 +440,30 @@
                                     <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white" href="#">
                                         <div class="p-5">
                                             <div class="flex justify-between">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-pink-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
+                                                <svg fill="#D53F8C" version="1.1" id="XMLID_66_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve" width="48px" height="48px" stroke="#D53F8C" stroke-width="0.00024000000000000003">
+                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                    <g id="SVGRepo_iconCarrier">
+                                                        <g id="workshop">
+                                                            <g>
+                                                                <polygon points="24,17 20,17 20,15 22,15 22,3 4,3 4,5 2,5 2,1 24,1 "></polygon>
+                                                            </g>
+                                                            <g>
+                                                                <rect x="10" width="6" height="4"></rect>
+                                                            </g>
+                                                            <g>
+                                                                <path d="M13,24H0v-5c0-2.3,1.3-4.4,3.3-5.4C2.5,12.8,2,11.7,2,10.5C2,8,4,6,6.5,6S11,8,11,10.5c0,0.7-0.1,1.3-0.4,1.8 c1.4-0.6,3.4-1.8,5.7-4.1l2-2l1.4,1.4L18.4,9l1.8,1.8l-0.3,0.6c-0.1,0.2-2.4,5.5-6.6,7.2C13.1,18.7,13,18.8,13,19V24z M2,22h9v-3 c0-1,0.6-1.9,1.5-2.3c2.7-1.1,4.6-4.2,5.3-5.5L17,10.4C12.1,15,8.4,15,8,15H6c-2.2,0-4,1.8-4,4V22z M6.5,13C7.9,13,9,11.9,9,10.5 S7.9,8,6.5,8S4,9.1,4,10.5S5.1,13,6.5,13z"></path>
+                                                            </g>
+                                                        </g>
+                                                    </g>
                                                 </svg>
                                                 <div class="bg-yellow-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                                    <span class="flex items-center">30%</span>
+                                                    <span class="flex items-center"><?php echo $pors_Teacher ?>%</span>
                                                 </div>
                                             </div>
                                             <div class="ml-2 w-full flex-1">
                                                 <div>
-                                                    <div class="mt-3 text-3xl font-bold leading-8">4.510</div>
+                                                    <div class="mt-3 text-3xl font-bold leading-8"><?php echo strval($totalTeacher[0]["count(*)"]) ?></div>
 
                                                     <div class="mt-1 text-base text-gray-600">Total Maestros</div>
                                                 </div>
@@ -449,22 +473,141 @@
                                     <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white" href="#">
                                         <div class="p-5">
                                             <div class="flex justify-between">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                                                <svg fill="#68D391" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48px" height="48px" viewBox="0 0 793.945 793.945" xml:space="preserve" stroke="#68D391" stroke-width="0.00793945">
+                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                                    <g id="SVGRepo_iconCarrier">
+                                                        <g>
+                                                            <path d="M793.945,761.744c0-51.26-8.874-88.787-26.365-111.523c-11.248-14.615-24.796-21.336-35.449-23.115l-141.333-49.869 c-51.298-17.104-67.438-30.725-72.228-36.244c42.001-40.84,52.373-99.988,54.933-127.477 c21.995-15.043,29.707-33.239,32.155-46.802c5.838-32.435-13.374-62.264-23.791-75.596c-2.523-22.968-6.546-44.05-11.717-63.534 h5.79V100.295h32.772c2.601,12.512,4.947,28.435,6.631,48.575c-7.447,10.704-16.185,32.525-19.646,79.593l-1.988,27.192h99.438 l-2.229-27.394c-2.907-35.892-15.504-60.523-24.348-73.886c-1.458-20.848-3.711-38.602-6.486-54.081h57.904V24.277h-86.388 c-11.229-13.643-23.109-17.416-32.622-17.416H422.311v17.416H75.954v76.019h142.05v127.289h5.788 c-5.169,19.483-9.191,40.566-11.715,63.534c-10.417,13.333-29.632,43.163-23.791,75.596c2.448,13.563,10.156,31.759,32.156,46.8 c2.571,27.436,12.953,86.402,54.945,127.457c-4.774,5.504-20.971,19.174-72.662,36.406L61.961,627.055 C43.947,629.779,0,648.09,0,761.744v25.34h793.945V761.744z M51.604,736.404c3.192-40.754,13.772-56.133,18.693-59.111 l148.882-51.98c68.186-22.729,102.443-47.375,107.838-77.576c3.425-19.262-6.25-34.807-14.277-41.162 c-41.6-38.119-42.463-107.383-42.463-108.014v-15.667l-14.007-6.999c-10.788-5.384-16.863-11.468-18.09-18.09 c-2.409-13.011,10.358-32.01,16.843-39.095l5.889-6.314l0.818-8.585c2.695-28.644,7.598-54.19,14.595-76.226h241.292 c7.003,22.035,11.899,47.582,14.6,76.226l0.815,8.585l5.891,6.314c6.271,6.728,19.229,25.882,16.849,39.021 c-1.187,6.645-7.283,12.755-18.1,18.162l-14.006,6.999v15.666c0,0.695-1.149,70.17-41.162,106.914 c-9.331,7.455-19.005,23-15.576,42.262c5.396,30.201,39.653,54.85,107.417,77.43l147.706,52.129h1.594 c4.93,2.994,15.508,18.357,18.697,59.111L51.604,736.404L51.604,736.404z"></path>
+                                                        </g>
+                                                    </g>
                                                 </svg>
                                                 <div class="bg-blue-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                                    <span class="flex items-center">30%</span>
+                                                    <span class="flex items-center"><?php echo $pors_Student ?>%</span>
                                                 </div>
                                             </div>
                                             <div class="ml-2 w-full flex-1">
                                                 <div>
-                                                    <div class="mt-3 text-3xl font-bold leading-8">4.510</div>
+                                                    <div class="mt-3 text-3xl font-bold leading-8"><?php echo strval($totalStudent[0]["count(*)"]) ?></div>
 
                                                     <div class="mt-1 text-base text-gray-600">Total Alumnos</div>
                                                 </div>
                                             </div>
                                         </div>
                                     </a>
+                                </div>
+                            </div>
+
+                            <div class="col-span-12 mt-5">
+                                <div class="grid gap-2 grid-cols-1 lg:grid-cols-2">
+                                    <div class="bg-white shadow-lg p-4" id="chartline"></div>
+                                    <div class="bg-white shadow-lg" id="chartpie"></div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 mt-5">
+                                <div class="grid gap-2 grid-cols-1 lg:grid-cols-1">
+                                    <div class="bg-white p-4 shadow-lg rounded-lg">
+                                        <h1 class="font-bold text-base">Table</h1>
+                                        <div class="mt-4">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto">
+                                                    <div class="py-2 align-middle inline-block min-w-full">
+                                                        <div
+                                                            class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th
+                                                                            class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">PRODUCT NAME</span>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th
+                                                                            class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">Stock</span>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th
+                                                                            class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">STATUS</span>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th
+                                                                            class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">ACTION</span>
+                                                                            </div>
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                                    <tr>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                                                                            <p>Apple MacBook Pro 13</p>
+                                                                            <p class="text-xs text-gray-400">PC & Laptop
+                                                                            </p>
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                                                                            <p>77</p>
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                                                                            <div class="flex text-green-500">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    class="w-5 h-5 mr-1" fill="none"
+                                                                                    viewBox="0 0 24 24"
+                                                                                    stroke="currentColor">
+                                                                                    <path stroke-linecap="round"
+                                                                                        stroke-linejoin="round"
+                                                                                        stroke-width="2"
+                                                                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                                </svg>
+                                                                                <p>Active</p>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
+                                                                            <div class="flex space-x-4">
+                                                                                <a href="#" class="text-blue-500 hover:text-blue-600">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    class="w-5 h-5 mr-1"
+                                                                                    fill="none" viewBox="0 0 24 24"
+                                                                                    stroke="currentColor">
+                                                                                    <path stroke-linecap="round"
+                                                                                        stroke-linejoin="round"
+                                                                                        stroke-width="2"
+                                                                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                                                </svg>
+                                                                                <p>Edit</p>
+                                                                                </a>
+                                                                                <a href="#" class="text-red-500 hover:text-red-600">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    class="w-5 h-5 mr-1 ml-3"
+                                                                                    fill="none" viewBox="0 0 24 24"
+                                                                                    stroke="currentColor">
+                                                                                    <path stroke-linecap="round"
+                                                                                        stroke-linejoin="round"
+                                                                                        stroke-width="2"
+                                                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                                </svg>
+                                                                                <p>Delete</p>
+                                                                                </a>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
