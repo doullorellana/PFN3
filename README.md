@@ -98,6 +98,10 @@ Tenemos 5 categorías a calificar:
 ### Diagrama ER de la BDD
 ![DiagramaER.png](./assets/DiagramaER.png)
 
+### Pantalla Login
+![Login.png](./assets/Login.PNG)
+
+
 ## ACUMULADO DE CATEGORÍAS
 
 | Categoría                | Valor (puntaje) |
