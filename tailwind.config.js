@@ -4,6 +4,7 @@ module.exports = {
   content: [
     './**/*.{html,js,php}',
     './node_modules/inherits/**/*.js',
+    "./templates/**/*.html.twig",
   ],
   theme: {
     fontSize: {

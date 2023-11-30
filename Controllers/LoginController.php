@@ -21,7 +21,7 @@ class LoginController
     public function login($correo, $pass)
     {
         //var_dump($correo, $pass);
-        $usuario = $this->model->whereLogin("email","password", "=", $correo, $pass);
+        $usuario = $this->model->whereLogin("correo","password", "=", $correo, $pass);
 
         if (count($usuario) === 1) {
 

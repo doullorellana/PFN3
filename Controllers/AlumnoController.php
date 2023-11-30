@@ -1,7 +1,7 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/models/User.php";
 
-class UsuarioController
+class AlumnoController
 {
     protected $model;
 
@@ -17,39 +17,40 @@ class UsuarioController
     {
         $usuarios= $this->model->all();
 
-        include $_SERVER["DOCUMENT_ROOT"] . "../views/usuarios/read.php";
+        include $_SERVER["DOCUMENT_ROOT"] . "../views/alumnos/read.php";
     }
 
     /**
-     * Muestra un formulario para crear un nuevo usuario.
+     * Muestra un formulario para crear un nuevo alumno.
      */
     public function create()
     {
-        include $_SERVER["DOCUMENT_ROOT"] . "../views/usuarios/create.php";
+        //include $_SERVER["DOCUMENT_ROOT"] . "../views/alumnos/create.php";
+        require_once __DIR__."/../views/alumnos/create.php";
     }
 
     /**
-     * Muestra un formulario para editar un usuario.
+     * Muestra un formulario para editar un alumno.
      */
     public function edit($id)
     {
         $usuarios = $this->model->find($id);
 
-        include $_SERVER["DOCUMENT_ROOT"] . "../views/usuarios/edit.php";
+        include $_SERVER["DOCUMENT_ROOT"] . "../views/alumnos/edit.php";
     }
 
     /**
-     * Actualiza los datos de un usuario y envía al usuario a /usuarios.
+     * Actualiza los datos de un alumno y envía al alumno a /alumno.
      */
     public function update($request)
     {
         $this->model->update($request);
 
-        header("Location: /usuarios");
+        header("Location: /alumnos");
     }
 
     /**
-     * Guarda el registro de un nuevo usuario y envía al usuario a /usuarios.
+     * Guarda el registro de un nuevo alumno y envía al alumno a /alumno.
      * 
      * @param array $request Datos del usuario nuevo
      */
@@ -57,16 +58,16 @@ class UsuarioController
     {
         $response = $this->model->create($request);
 
-        header("Location: /usuarios");
+        header("Location: /alumnos");
     }
 
     /**
-     * Eliminar el registro de un usuario y envía al usuario a /usuario.
+     * Eliminar el registro de un alumno y envía al alumno a /alumno.
      */
     public function delete($id)
     {
         $this->model->destroy($id);
 
-        header("Location: /usuarios");
+        header("Location: /alumnos");
     }
 }

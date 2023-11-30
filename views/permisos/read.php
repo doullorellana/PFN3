@@ -11,6 +11,15 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
+    <!-- Incluye jQuery -->
+    <script src="http://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <style>
+        /* Estilos para ocultar el contenido del modal de otro archivo */
+        #modalEditarPermisos {
+            display: none
+        }
+    </style>
+
 </head>
 
 <body>
@@ -377,229 +386,147 @@
             </header>
             <main class="">
                 <div class="grid mb-4 pb-10 px-8 mx-4 rounded-3xl bg-gray-100 border-4 border-green-400">
+                    <h1 class="mt-5 mx-5 text-xl">Lista de Permisos</h1>
+                    <div class="w-full max-w-screen-xl mx-auto">
+
+                    </div>
 
                     <div class="grid grid-cols-12 gap-6">
                         <div class="grid grid-cols-12 col-span-12 gap-6 xxl:col-span-9">
-                            <div class="col-span-12 mt-8">
-                                <div class="flex items-center h-10 intro-y">
-                                    <h2 class="mr-5 text-lg font-medium truncate"><?php echo $rol ?> : Hola, <?php echo $user ?></h2>
-                                </div>
-                                <div class="grid grid-cols-12 gap-6 mt-5">
-                                    <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white" href="#">
-                                        <div class="p-5">
-                                            <div class="flex justify-between">
-                                                <svg width="50px" height="50px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                                    <g id="SVGRepo_iconCarrier">
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.875 7.375C14.875 8.68668 13.8117 9.75 12.5 9.75C11.1883 9.75 10.125 8.68668 10.125 7.375C10.125 6.06332 11.1883 5 12.5 5C13.8117 5 14.875 6.06332 14.875 7.375Z" stroke="#63B3ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17.25 15.775C17.25 17.575 15.123 19.042 12.5 19.042C9.877 19.042 7.75 17.579 7.75 15.775C7.75 13.971 9.877 12.509 12.5 12.509C15.123 12.509 17.25 13.971 17.25 15.775Z" stroke="#63B3ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M19.9 9.55301C19.9101 10.1315 19.5695 10.6588 19.0379 10.8872C18.5063 11.1157 17.8893 11 17.4765 10.5945C17.0638 10.189 16.9372 9.57418 17.1562 9.03861C17.3753 8.50305 17.8964 8.1531 18.475 8.15301C19.255 8.14635 19.8928 8.77301 19.9 9.55301V9.55301Z" stroke="#63B3ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.10001 9.55301C5.08986 10.1315 5.43054 10.6588 5.96214 10.8872C6.49375 11.1157 7.11072 11 7.52347 10.5945C7.93621 10.189 8.06278 9.57418 7.84376 9.03861C7.62475 8.50305 7.10363 8.1531 6.52501 8.15301C5.74501 8.14635 5.10716 8.77301 5.10001 9.55301Z" stroke="#63B3ED" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                        <path d="M19.2169 17.362C18.8043 17.325 18.4399 17.6295 18.403 18.0421C18.366 18.4547 18.6705 18.8191 19.0831 18.856L19.2169 17.362ZM22 15.775L22.7455 15.8567C22.7515 15.8023 22.7515 15.7474 22.7455 15.693L22 15.775ZM19.0831 12.695C18.6705 12.7319 18.366 13.0963 18.403 13.5089C18.4399 13.9215 18.8044 14.226 19.2169 14.189L19.0831 12.695ZM5.91689 18.856C6.32945 18.8191 6.63395 18.4547 6.59701 18.0421C6.56007 17.6295 6.19567 17.325 5.78311 17.362L5.91689 18.856ZM3 15.775L2.25449 15.693C2.24851 15.7474 2.2485 15.8023 2.25446 15.8567L3 15.775ZM5.78308 14.189C6.19564 14.226 6.56005 13.9215 6.59701 13.5089C6.63397 13.0963 6.32948 12.7319 5.91692 12.695L5.78308 14.189ZM19.0831 18.856C20.9169 19.0202 22.545 17.6869 22.7455 15.8567L21.2545 15.6933C21.1429 16.7115 20.2371 17.4533 19.2169 17.362L19.0831 18.856ZM22.7455 15.693C22.5444 13.8633 20.9165 12.5307 19.0831 12.695L19.2169 14.189C20.2369 14.0976 21.1426 14.839 21.2545 15.8569L22.7455 15.693ZM5.78311 17.362C4.76287 17.4533 3.85709 16.7115 3.74554 15.6933L2.25446 15.8567C2.45496 17.6869 4.08306 19.0202 5.91689 18.856L5.78311 17.362ZM3.74551 15.8569C3.85742 14.839 4.76309 14.0976 5.78308 14.189L5.91692 12.695C4.08354 12.5307 2.45564 13.8633 2.25449 15.693L3.74551 15.8569Z" fill="#63B3ED"></path>
-                                                    </g>
-                                                </svg>
 
-                                                <div class="bg-green-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                                    <span class="flex items-center">100%</span>
-                                                </div>
-                                            </div>
-                                            <div class="ml-2 w-full flex-1">
-                                                <div>
-                                                    <div class="mt-3 text-3xl font-bold leading-8"><?php echo strval($totalUser[0]["count(*)"]) ?></div>
 
-                                                    <div class="mt-1 text-base text-gray-600">Total Usuarios</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white" href="#">
-                                        <div class="p-5">
-                                            <div class="flex justify-between">
-                                                <svg fill="#F6E05E" height="48px" width="48px" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve" stroke="#F6E05E" stroke-width="0.00024000000000000003">
-                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                                    <g id="SVGRepo_iconCarrier">
-                                                        <g id="user-admin">
-                                                            <path d="M22.3,16.7l1.4-1.4L20,11.6l-5.8,5.8c-0.5-0.3-1.1-0.4-1.7-0.4C10.6,17,9,18.6,9,20.5s1.6,3.5,3.5,3.5s3.5-1.6,3.5-3.5 c0-0.6-0.2-1.2-0.4-1.7l1.9-1.9l2.3,2.3l1.4-1.4l-2.3-2.3l1.1-1.1L22.3,16.7z M12.5,22c-0.8,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5 s1.5,0.7,1.5,1.5S13.3,22,12.5,22z"></path>
-                                                            <path d="M2,19c0-3.9,3.1-7,7-7c2,0,3.9,0.9,5.3,2.4l1.5-1.3c-0.9-1-1.9-1.8-3.1-2.3C14.1,9.7,15,7.9,15,6c0-3.3-2.7-6-6-6 S3,2.7,3,6c0,1.9,0.9,3.7,2.4,4.8C2.2,12.2,0,15.3,0,19v5h8v-2H2V19z M5,6c0-2.2,1.8-4,4-4s4,1.8,4,4s-1.8,4-4,4S5,8.2,5,6z"></path>
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                                <div class="bg-red-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                                    <span class="flex items-center"><?php echo $pors_Admin ?>%</span>
-                                                </div>
-                                            </div>
-                                            <div class="ml-2 w-full flex-1">
-                                                <div>
-                                                    <div class="mt-3 text-3xl font-bold leading-8"><?php echo strval($totalAdmin[0]["count(*)"]) ?></div>
 
-                                                    <div class="mt-1 text-base text-gray-600">Total Administradores</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white" href="#">
-                                        <div class="p-5">
-                                            <div class="flex justify-between">
-                                                <svg fill="#D53F8C" version="1.1" id="XMLID_66_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve" width="48px" height="48px" stroke="#D53F8C" stroke-width="0.00024000000000000003">
-                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                                    <g id="SVGRepo_iconCarrier">
-                                                        <g id="workshop">
-                                                            <g>
-                                                                <polygon points="24,17 20,17 20,15 22,15 22,3 4,3 4,5 2,5 2,1 24,1 "></polygon>
-                                                            </g>
-                                                            <g>
-                                                                <rect x="10" width="6" height="4"></rect>
-                                                            </g>
-                                                            <g>
-                                                                <path d="M13,24H0v-5c0-2.3,1.3-4.4,3.3-5.4C2.5,12.8,2,11.7,2,10.5C2,8,4,6,6.5,6S11,8,11,10.5c0,0.7-0.1,1.3-0.4,1.8 c1.4-0.6,3.4-1.8,5.7-4.1l2-2l1.4,1.4L18.4,9l1.8,1.8l-0.3,0.6c-0.1,0.2-2.4,5.5-6.6,7.2C13.1,18.7,13,18.8,13,19V24z M2,22h9v-3 c0-1,0.6-1.9,1.5-2.3c2.7-1.1,4.6-4.2,5.3-5.5L17,10.4C12.1,15,8.4,15,8,15H6c-2.2,0-4,1.8-4,4V22z M6.5,13C7.9,13,9,11.9,9,10.5 S7.9,8,6.5,8S4,9.1,4,10.5S5.1,13,6.5,13z"></path>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                                <div class="bg-yellow-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                                    <span class="flex items-center"><?php echo $pors_Teacher ?>%</span>
-                                                </div>
-                                            </div>
-                                            <div class="ml-2 w-full flex-1">
-                                                <div>
-                                                    <div class="mt-3 text-3xl font-bold leading-8"><?php echo strval($totalTeacher[0]["count(*)"]) ?></div>
-
-                                                    <div class="mt-1 text-base text-gray-600">Total Maestros</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white" href="#">
-                                        <div class="p-5">
-                                            <div class="flex justify-between">
-                                                <svg fill="#68D391" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48px" height="48px" viewBox="0 0 793.945 793.945" xml:space="preserve" stroke="#68D391" stroke-width="0.00793945">
-                                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                                                    <g id="SVGRepo_iconCarrier">
-                                                        <g>
-                                                            <path d="M793.945,761.744c0-51.26-8.874-88.787-26.365-111.523c-11.248-14.615-24.796-21.336-35.449-23.115l-141.333-49.869 c-51.298-17.104-67.438-30.725-72.228-36.244c42.001-40.84,52.373-99.988,54.933-127.477 c21.995-15.043,29.707-33.239,32.155-46.802c5.838-32.435-13.374-62.264-23.791-75.596c-2.523-22.968-6.546-44.05-11.717-63.534 h5.79V100.295h32.772c2.601,12.512,4.947,28.435,6.631,48.575c-7.447,10.704-16.185,32.525-19.646,79.593l-1.988,27.192h99.438 l-2.229-27.394c-2.907-35.892-15.504-60.523-24.348-73.886c-1.458-20.848-3.711-38.602-6.486-54.081h57.904V24.277h-86.388 c-11.229-13.643-23.109-17.416-32.622-17.416H422.311v17.416H75.954v76.019h142.05v127.289h5.788 c-5.169,19.483-9.191,40.566-11.715,63.534c-10.417,13.333-29.632,43.163-23.791,75.596c2.448,13.563,10.156,31.759,32.156,46.8 c2.571,27.436,12.953,86.402,54.945,127.457c-4.774,5.504-20.971,19.174-72.662,36.406L61.961,627.055 C43.947,629.779,0,648.09,0,761.744v25.34h793.945V761.744z M51.604,736.404c3.192-40.754,13.772-56.133,18.693-59.111 l148.882-51.98c68.186-22.729,102.443-47.375,107.838-77.576c3.425-19.262-6.25-34.807-14.277-41.162 c-41.6-38.119-42.463-107.383-42.463-108.014v-15.667l-14.007-6.999c-10.788-5.384-16.863-11.468-18.09-18.09 c-2.409-13.011,10.358-32.01,16.843-39.095l5.889-6.314l0.818-8.585c2.695-28.644,7.598-54.19,14.595-76.226h241.292 c7.003,22.035,11.899,47.582,14.6,76.226l0.815,8.585l5.891,6.314c6.271,6.728,19.229,25.882,16.849,39.021 c-1.187,6.645-7.283,12.755-18.1,18.162l-14.006,6.999v15.666c0,0.695-1.149,70.17-41.162,106.914 c-9.331,7.455-19.005,23-15.576,42.262c5.396,30.201,39.653,54.85,107.417,77.43l147.706,52.129h1.594 c4.93,2.994,15.508,18.357,18.697,59.111L51.604,736.404L51.604,736.404z"></path>
-                                                        </g>
-                                                    </g>
-                                                </svg>
-                                                <div class="bg-blue-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                                    <span class="flex items-center"><?php echo $pors_Student ?>%</span>
-                                                </div>
-                                            </div>
-                                            <div class="ml-2 w-full flex-1">
-                                                <div>
-                                                    <div class="mt-3 text-3xl font-bold leading-8"><?php echo strval($totalStudent[0]["count(*)"]) ?></div>
-
-                                                    <div class="mt-1 text-base text-gray-600">Total Alumnos</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <?php echo "<div class='col-span-12 mt-5 " . $ocultar_div_permisos . "'>" ?>
-                            <div class="grid gap-2 grid-cols-1 lg:grid-cols-2">
-                                <div class="bg-white shadow-lg p-4" id="chartline"></div>
-                                <div class="bg-white shadow-lg" id="chartpie"></div>
-                            </div>
-                        </div>
-                        <div class='col-span-12 mt-5 " . $ocultar_div_permisos . "'>
-                            <div class="grid gap-2 grid-cols-1 lg:grid-cols-1">
-                                <div class="bg-white p-4 shadow-lg rounded-lg">
-                                    <h1 class="font-bold text-base">Usuarios</h1>
-                                    <div class="mt-4">
-                                        <div class="flex flex-col">
-                                            <div class="-my-2 overflow-x-auto">
-                                                <div class="py-2 align-middle inline-block min-w-full">
-                                                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
-                                                        <table class="min-w-full divide-y divide-gray-200">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                                        <div class="flex cursor-pointer">
-                                                                            <span class="mr-2">Id</span>
-                                                                        </div>
-                                                                    </th>
-                                                                    <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                                        <div class="flex cursor-pointer">
-                                                                            <span class="mr-2">Nombre</span>
-                                                                        </div>
-                                                                    </th>
-                                                                    <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                                        <div class="flex cursor-pointer">
-                                                                            <span class="mr-2">Correo</span>
-                                                                        </div>
-                                                                    </th>
-                                                                    <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                                        <div class="flex cursor-pointer">
-                                                                            <span class="mr-2">Rol</span>
-                                                                        </div>
-                                                                    </th>
-                                                                    <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
-                                                                        <div class="flex cursor-pointer">
-                                                                            <span class="mr-2">Estatus</span>
-                                                                        </div>
-                                                                    </th>
-                                                                    <!--<th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            <div class='col-span-12 mt-5'>
+                                <div class="grid gap-2 grid-cols-1 lg:grid-cols-1">
+                                    <div class="bg-white p-4 shadow-lg rounded-lg">
+                                        <h2 class="font-bold text-base">Información de Permisos</h2>
+                                        <div class="mt-4">
+                                            <div class="flex flex-col">
+                                                <div class="-my-2 overflow-x-auto">
+                                                    <div class="py-2 align-middle inline-block min-w-full">
+                                                        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg bg-white">
+                                                            <table class="min-w-full divide-y divide-gray-200">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">Id</span>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">Correo</span>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">Permiso</span>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">Estatus</span>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">Acciones</span>
+                                                                            </div>
+                                                                        </th>
+                                                                        <!--<th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                                     <div class="flex cursor-pointer">
                                                                         <span class="mr-2">ACTION</span>
                                                                     </div>
                                                                 </th>-->
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody class="bg-white divide-y divide-gray-200">
-                                                                <?php
-                                                                //var_dump($usuarios);
-                                                                //foreach ($usuarios as $users => $value) {
-                                                                //    $value=(array)$value;
-                                                                ?>
-                                                                <tr>
-                                                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                                                        <p><?= $usuarios["id"] ?></p>
-                                                                    </td>
-                                                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                                                        <p><?= $usuarios["nombre"] ?></p>
-                                                                        <p class="text-xs text-gray-400">PC & Laptop</p>
-                                                                    </td>
-                                                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                                                        <p><?= $usuarios["correo"] ?></p>
-                                                                    </td>
-                                                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                                                        <p><?= $usuarios["Rol"] ?></p>
-                                                                    </td>
-                                                                    <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                                                        <div class="flex text-green-500">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                                            </svg>
-                                                                            <p>Active</p>
-                                                                        </div>
-                                                                    </td>
-                                                                    <!--<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5">
-                                                                    <div class="flex space-x-4">
-                                                                        <a href="#" class="text-blue-500 hover:text-blue-600">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                                                            </svg>
-                                                                            <p>Edit</p>
-                                                                        </a>
-                                                                        <a href="#" class="text-red-500 hover:text-red-600">
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                                    <?php
+                                                                    //var_dump($usuarios);
+                                                                    foreach ($permisos as $permiso) {
+                                                                        switch ($permiso["rol_id"]) {
+                                                                            case 1:
+                                                                                $rol = "Admin";
+                                                                                $estilo = "bg-orange-500 text-white rounded-full px-2 py-0.5";
+                                                                                break;
+                                                                            case 2:
+                                                                                $rol = "Maestro";
+                                                                                $estilo = "bg-green-500 text-white rounded-full px-2 py-0.5";
+                                                                                break;
+                                                                            case 3:
+                                                                                $rol = "Alumno";
+                                                                                $estilo = "bg-zinc-400 text-white rounded-full px-2 py-0.5";
+                                                                                break;
+                                                                        }
+                                                                        $status = $permiso["estatus"] == 1 ? "Activo" : "Inactivo";
+
+                                                                    ?>
+                                                                        <tr>
+                                                                            <td class="px-6 py-3 whitespace-no-wrap text-md leading-5">
+                                                                                <p><?= $permiso["id"] ?></p>
+                                                                            </td>
+                                                                            <td class="px-6 py-3 whitespace-no-wrap text-md leading-5">
+                                                                                <p><?= $permiso["correo"] ?></p>
+                                                                                <p class="text-xs text-gray-400"><?= $permiso["nombre"] ?></p>
+                                                                            </td>
+                                                                            <td class="px-6 py-3 whitespace-no-wrap text-center text-sm leading-5">
+                                                                                <p class="<?= $estilo ?>"><?= $rol ?></p>
+                                                                            </td>
+                                                                            <td class="px-6 py-3 whitespace-no-wrap text-sm leading-5">
+                                                                                <div class="flex text-green-500">
+                                                                                    <?php
+                                                                                    if ($permiso["estatus"] == 1) {
+
+                                                                                    ?>
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                                                                        </svg>
+                                                                                        <p class="ml-2"><?= $status ?></p>
+
+                                                                                    <?php
+                                                                                    }
+                                                                                    if (($permiso["estatus"] == 0)) {
+                                                                                    ?>
+                                                                                        <svg width="24px" height="24px" viewBox="0 0 1024.00 1024.00" fill="#ff0000" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000" stroke-width="20.48">
+                                                                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                                                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="6.144"></g>
+                                                                                            <g id="SVGRepo_iconCarrier">
+                                                                                                <path d="M512 897.6c-108 0-209.6-42.4-285.6-118.4-76-76-118.4-177.6-118.4-285.6 0-108 42.4-209.6 118.4-285.6 76-76 177.6-118.4 285.6-118.4 108 0 209.6 42.4 285.6 118.4 157.6 157.6 157.6 413.6 0 571.2-76 76-177.6 118.4-285.6 118.4z m0-760c-95.2 0-184.8 36.8-252 104-67.2 67.2-104 156.8-104 252s36.8 184.8 104 252c67.2 67.2 156.8 104 252 104 95.2 0 184.8-36.8 252-104 139.2-139.2 139.2-364.8 0-504-67.2-67.2-156.8-104-252-104z" fill=""></path>
+                                                                                                <path d="M707.872 329.392L348.096 689.16l-31.68-31.68 359.776-359.768z" fill=""></path>
+                                                                                                <path d="M328 340.8l32-31.2 348 348-32 32z" fill=""></path>
+                                                                                            </g>
+                                                                                        </svg>
+                                                                                        <p class="ml-2 text-red-500 hover:text-red-600"><?= $status ?></p>
+
+                                                                                    <?php
+                                                                                    }
+                                                                                    ?>
+                                                                                </div>
+                                                                            </td>
+                                                                            <td class="px-6 py-3 whitespace-no-wrap text-sm leading-5">
+                                                                                <div class="flex space-x-4" id="open-btn">
+                                                                                    <!-- href="/permisos/edit?id=<?= $permiso["id"] ?> -->
+                                                                                    <a class="text-blue-500 hover:text-blue-600" href="/permisos/edit?id=<?= $permiso["id"] ?>">
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                                                        </svg>
+                                                                                        <p>Edit</p>
+                                                                                    </a>
+                                                                                    <!--<a href="#" class="text-red-500 hover:text-red-600">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                                                             </svg>
                                                                             <p>Delete</p>
-                                                                        </a>
-                                                                    </div>
-                                                                </td>-->
-                                                                </tr>
-                                                                <?php
-                                                                //}
-                                                                ?>
-                                                            </tbody>
-                                                        </table>
+                                                                        </a>-->
+                                                                                </div>
+                                                                            </td>
+                                                                        </tr>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -610,10 +537,71 @@
                         </div>
                     </div>
                 </div>
+            </main>
         </div>
-        </main>
     </div>
+
+    <div id="modalEditarPermisos">
+        <?php
+        include $_SERVER["DOCUMENT_ROOT"] . "../views/permisos/edit.php";
+        ?>
     </div>
+
+    <!-- Main modal -->
+    <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        Create New Product
+                    </h3>
+                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <form class="p-4 md:p-5">
+                    <div class="grid gap-4 mb-4 grid-cols-2">
+                        <div class="col-span-2">
+                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                            <input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                            <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <option selected="">Select category</option>
+                                <option value="TV">TV/Monitors</option>
+                                <option value="PC">PC</option>
+                                <option value="GA">Gaming/Console</option>
+                                <option value="PH">Phones</option>
+                            </select>
+                        </div>
+                        <div class="col-span-2">
+                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Description</label>
+                            <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></textarea>
+                        </div>
+                    </div>
+                    <button type="button" id="ok-btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+                        </svg>
+                        Add new product
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script prueba para ocultar un div-->
     <script>
         function div_permisos() {
             if ($ocultar_div_permisos = "hidden") {
@@ -623,6 +611,7 @@
             }
         }
     </script>
+
     <script>
         function data() {
 

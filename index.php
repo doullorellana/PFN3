@@ -15,12 +15,14 @@
     <?php
     require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/LoginController.php");
     require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/HomeController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/UsuarioController.php");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/PermisoController.php");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/AlumnoController.php");
 
     // ENRUTADOR
     $loginController = new LoginController();
     $homeController = new HomeController();
-    $usuarioController = new UsuarioController();
+    $permisoController = new PermisoController();
+    $alumnoController = new AlumnoController();
 
     // Dividimos la ruta por el signo "?" para no leer los query params. Ejem: /clientes?id=1
     $route = explode("?", $_SERVER["REQUEST_URI"]);
@@ -34,18 +36,55 @@
                 $loginController->login($_POST["email"], $_POST["password"]);
                 break;
 
-            case '/usuarios/delete':
-                $usuarioController->delete($_POST["id"]);
+            // Opciones correspondiente a los Permisos de los Usuarios
+            case '/permisos/create':
+                $permisoController->store($_POST);
                 break;
 
-            case '/usuarios/create':
-                $usuarioController->store($_POST);
+            case '/permisos/update':
+                $permisoController->update($_POST);
                 break;
 
-            case '/usuarios/update':
-                $usuarioController->update($_POST);
+            // Opciones correspondiente a la gestion de los Alumnos
+            case '/alumnos/delete':
+                $alumnoController->delete($_POST["id"]);
                 break;
 
+            case '/alumnos/create':
+                $alumnoController->store($_POST);
+                break;
+
+            case '/alumnos/update':
+                $alumnoController->update($_POST);
+                break;
+            
+            // Opciones correspondiente a la gestion de los Maestros
+            case '/maestros/delete':
+                $alumnoController->delete($_POST["id"]);
+                break;
+
+            case '/maestros/create':
+                $alumnoController->store($_POST);
+                break;
+
+            case '/maestros/update':
+                $alumnoController->update($_POST);
+                break;
+            
+            // Opciones correspondiente a la gestion de las Clases
+            case '/clases/delete':
+                $alumnoController->delete($_POST["id"]);
+                break;
+
+            case '/clases/create':
+                $alumnoController->store($_POST);
+                break;
+
+            case '/clases/update':
+                $alumnoController->update($_POST);
+                break;
+
+            // Opciones por default de no encontrar ninguna de las anteriores
             default:
                 echo "NO ENCONTRAMOS LA RUTA.";
                 break;
@@ -61,18 +100,55 @@
                 $loginController->dashboard();
                 break;
 
-            case '/usuarios':
-                $usuarioController->index();
+            // Opciones correspondiente a los Permisos de Usuarios
+            case '/permisos':
+                $permisoController->index();
                 break;
 
-            case '/usuarios/edit':
-                $usuarioController->edit($_GET["id"]);
+            case '/permisos/edit':
+                $permisoController->edit($_GET["id"]);
                 break;
 
-            case '/usuarios/create':
-                $usuarioController->create();
+            // Opciones correspondiente a la gestion de los Alumnos
+            case '/alumnos':
+                $alumnoController->index();
                 break;
 
+            case '/alumnos/edit':
+                $alumnoController->edit($_GET["id"]);
+                break;
+
+            case '/alumnos/create':
+                $alumnoController->create();
+                break;
+
+            // Opciones correspondiente a la gestion de los Maestros
+            case '/maestros':
+                $alumnoController->index();
+                break;
+
+            case '/maestros/edit':
+                $alumnoController->edit($_GET["id"]);
+                break;
+
+            case '/maestros/create':
+                $alumnoController->create();
+                break;
+
+            // Opciones correspondiente a la gestion de las Clases
+            case '/clases':
+                $alumnoController->index();
+                break;
+
+            case '/clases/edit':
+                $alumnoController->edit($_GET["id"]);
+                break;
+
+            case '/clases/create':
+                $alumnoController->create();
+                break;
+
+            // Opciones por default de no encontrar ninguna de las anteriores
             default:
                 echo "NO ENCONTRAMOS LA RUTA.";
                 break;
