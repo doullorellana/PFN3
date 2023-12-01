@@ -14,14 +14,18 @@
 <body>
     <?php
     require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/LoginController.php");
-    require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/HomeController.php");
     require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/PermisoController.php");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/MaestroController.php");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/ClaseController.php");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/HomeController.php");
     require_once($_SERVER["DOCUMENT_ROOT"] . "/Controllers/AlumnoController.php");
 
     // ENRUTADOR
     $loginController = new LoginController();
-    $homeController = new HomeController();
     $permisoController = new PermisoController();
+    $maestroController = new MaestroController();
+    $claseController = new ClaseController();
+    $homeController = new HomeController();
     $alumnoController = new AlumnoController();
 
     // Dividimos la ruta por el signo "?" para no leer los query params. Ejem: /clientes?id=1
@@ -36,7 +40,7 @@
                 $loginController->login($_POST["email"], $_POST["password"]);
                 break;
 
-            // Opciones correspondiente a los Permisos de los Usuarios
+                // Opciones correspondiente a los Permisos de los Usuarios
             case '/permisos/create':
                 $permisoController->store($_POST);
                 break;
@@ -45,7 +49,20 @@
                 $permisoController->update($_POST);
                 break;
 
-            // Opciones correspondiente a la gestion de los Alumnos
+                // Opciones correspondiente a la gestion de los Maestros
+            case '/maestros/delete':
+                break;
+                $maestroController->delete($_POST["id"]);
+
+            case '/maestros/create':
+                $maestroController->store($_POST);
+                break;
+
+            case '/maestros/update':
+                $maestroController->update($_POST);
+                break;
+
+                // Opciones correspondiente a la gestion de los Alumnos
             case '/alumnos/delete':
                 $alumnoController->delete($_POST["id"]);
                 break;
@@ -57,34 +74,22 @@
             case '/alumnos/update':
                 $alumnoController->update($_POST);
                 break;
-            
-            // Opciones correspondiente a la gestion de los Maestros
-            case '/maestros/delete':
-                $alumnoController->delete($_POST["id"]);
-                break;
 
-            case '/maestros/create':
-                $alumnoController->store($_POST);
-                break;
 
-            case '/maestros/update':
-                $alumnoController->update($_POST);
-                break;
-            
-            // Opciones correspondiente a la gestion de las Clases
+                // Opciones correspondiente a la gestion de las Clases
             case '/clases/delete':
-                $alumnoController->delete($_POST["id"]);
+                $claseController->delete($_POST["id"]);
                 break;
 
             case '/clases/create':
-                $alumnoController->store($_POST);
+                $claseController->store($_POST);
                 break;
 
             case '/clases/update':
-                $alumnoController->update($_POST);
+                $claseController->update($_POST);
                 break;
 
-            // Opciones por default de no encontrar ninguna de las anteriores
+                // Opciones por default de no encontrar ninguna de las anteriores
             default:
                 echo "NO ENCONTRAMOS LA RUTA.";
                 break;
@@ -100,7 +105,7 @@
                 $loginController->dashboard();
                 break;
 
-            // Opciones correspondiente a los Permisos de Usuarios
+                // Opciones correspondiente a los Permisos de Usuarios
             case '/permisos':
                 $permisoController->index();
                 break;
@@ -109,7 +114,20 @@
                 $permisoController->edit($_GET["id"]);
                 break;
 
-            // Opciones correspondiente a la gestion de los Alumnos
+                // Opciones correspondiente a la gestion de los Maestros
+            case '/maestros':
+                $maestroController->index();
+                break;
+
+            case '/maestros/edit':
+                $maestroController->edit($_GET["id"]);
+                break;
+
+            case '/maestros/create':
+                $maestroController->create();
+                break;
+
+                // Opciones correspondiente a la gestion de los Alumnos
             case '/alumnos':
                 $alumnoController->index();
                 break;
@@ -122,33 +140,21 @@
                 $alumnoController->create();
                 break;
 
-            // Opciones correspondiente a la gestion de los Maestros
-            case '/maestros':
-                $alumnoController->index();
-                break;
 
-            case '/maestros/edit':
-                $alumnoController->edit($_GET["id"]);
-                break;
-
-            case '/maestros/create':
-                $alumnoController->create();
-                break;
-
-            // Opciones correspondiente a la gestion de las Clases
+                // Opciones correspondiente a la gestion de las Clases
             case '/clases':
-                $alumnoController->index();
+                $claseController->index();
                 break;
 
             case '/clases/edit':
-                $alumnoController->edit($_GET["id"]);
+                $claseController->edit($_GET["id"]);
                 break;
 
             case '/clases/create':
-                $alumnoController->create();
+                $claseController->create();
                 break;
 
-            // Opciones por default de no encontrar ninguna de las anteriores
+                // Opciones por default de no encontrar ninguna de las anteriores
             default:
                 echo "NO ENCONTRAMOS LA RUTA.";
                 break;

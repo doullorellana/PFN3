@@ -25,8 +25,7 @@ class AlumnoController
      */
     public function create()
     {
-        //include $_SERVER["DOCUMENT_ROOT"] . "../views/alumnos/create.php";
-        require_once __DIR__."/../views/alumnos/create.php";
+        include $_SERVER["DOCUMENT_ROOT"] . "../views/alumnos/create.php";
     }
 
     /**

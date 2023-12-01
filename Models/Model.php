@@ -196,18 +196,28 @@ class Model
      */
     public function whereLogin($columnA, $columnB, $operator, $value, $pass)
     {
-        $query = "select u.id, u.nombre, u.correo, u.password, r.nombre as Rol, u.rol_id from usuarios u
+        $query = "select u.id, u.nombre, u.correo, u.password, r.nombre as Rol, u.rol_id, u.estatus from usuarios u
         inner join roles r on r.id = u.rol_id
         where $columnA $operator '$value' and $columnB $operator '$pass'";
-        /*$query ="select m.id, m.nombre, m.apellido, m.email, m.password, r.rol, u.rol_id from usuarios u
-        inner join maestros m on u.id = m.usuario_id
-        inner join roles r on u.rol_id = r.id
-        where $columnA $operator '$value' and $columnB $operator '$pass'
-        union
-        select a.id, a.nombre, a.apellido, a.email, a.password, ro.rol, us.rol_id from usuarios us
-        inner join alumnos a on us.id = a.usuario_id
-        inner join roles ro on us.rol_id = ro.id
-        where $columnA $operator '$value' and $columnB $operator '$pass'";*/
+
+                /***
+                *Query anterior abajo, en la cual unia 2 consultas para validar el login en la tabla usuarios o en la tabla maestros
+                *Se volvió a construir la BDD unificando las tablas: alumnos, maestros y usuarios en una sola tabla llamada usuarios
+                *De esta manera la consulta, grabar informacion entre otros, se hace mas practico. Esto segun recomendaciones de los
+                *instructores Funval, particularmente de: Harold Carazas y Diego Huarsaya. Gracias por su apoyo.
+
+                */
+
+                /*$query ="select m.id, m.nombre, m.apellido, m.email, m.password, r.rol, u.rol_id from usuarios u
+                inner join maestros m on u.id = m.usuario_id
+                inner join roles r on u.rol_id = r.id
+                where $columnA $operator '$value' and $columnB $operator '$pass'
+                union
+                select a.id, a.nombre, a.apellido, a.email, a.password, ro.rol, us.rol_id from usuarios us
+                inner join alumnos a on us.id = a.usuario_id
+                inner join roles ro on us.rol_id = ro.id
+                where $columnA $operator '$value' and $columnB $operator '$pass'";*/
+                
         //var_dump($query);
         $res = $this->db->query("$query");
         //var_dump($res);

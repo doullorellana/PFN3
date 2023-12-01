@@ -21,7 +21,7 @@ class PermisoController
     }
 
     /**
-     * Muestra un formulario para editar un usuario.
+     * Muestra un formulario para editar un permiso de usuario.
      */
     public function edit($id)
     {
@@ -31,19 +31,20 @@ class PermisoController
     }
 
     /**
-     * Actualiza los datos de un usuario y envía al usuario a /usuarios.
+     * Actualiza los datos de un permiso de usuario y envía al permiso a /permisos.
      */
     public function update($request)
     {
+        var_dump($request);
         $this->model->update($request);
 
         header("Location: /permisos");
     }
 
     /**
-     * Guarda el registro de un nuevo usuario y envía al usuario a /usuarios.
+     * Guarda el registro de un nuevo permiso y envía al permiso a /permisos.
      * 
-     * @param array $request Datos del usuario nuevo
+     * @param array $request Datos del permiso de usuario nuevo
      */
     public function store($request)
     {

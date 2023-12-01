@@ -11,15 +11,6 @@
 
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
-    <!-- Incluye jQuery -->
-    <script src="http://code.jquery.com/jquery-3.6.3.min.js"></script>
-    <style>
-        /* Estilos para ocultar el contenido del modal de otro archivo */
-        #modalEditarPermisos {
-            display: none
-        }
-    </style>
-
 </head>
 
 <body>
@@ -27,20 +18,8 @@
     session_start();
     require_once $_SERVER["DOCUMENT_ROOT"] . "/models/Model.php";
 
-    // Variables de calculo para colocar en CARDS del DashBoard
-    $totalUser = $this->model->all_users_count();
-    //var_dump($totalUser[0]["count(*)"]);
-    $totalAdmin = $this->model->all_users_admin();
-    $totalTeacher = $this->model->all_users_teacher();
-    $totalStudent = $this->model->all_users_student();
-
-    $pors_Admin = round((floatval(strval($totalAdmin[0]["count(*)"]))  /  floatval(strval($totalUser[0]["count(*)"])))  *  100, 1);
-    $pors_Teacher = round((floatval(strval($totalTeacher[0]["count(*)"]))  /  floatval(strval($totalUser[0]["count(*)"])))  *  100, 1);
-    $pors_Student = round((floatval(strval($totalStudent[0]["count(*)"]))  /  floatval(strval($totalUser[0]["count(*)"])))  *  100, 1);
-
     $ocultar_div_permisos = 'hidden';
 
-    //var_dump((floatval(strval($totalStudent[0]["count(*)"]))  /  floatval(strval($totalUser[0]["count(*)"])))  *  100);
     //var_dump($pors_Admin * 1000);
     $rol = $_SESSION["user"]["Rol"];
     $usuarios = $_SESSION["user"];
@@ -102,7 +81,7 @@
                                 </a>
                             </li>
                             <li class="relative px-2 py-1 ">
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href=" #">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href="/maestros">
                                     <svg fill="#ffffff" height="24px" width="24px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.999 511.999" xml:space="preserve" stroke="#ffffff" stroke-width="5.1199900000000005">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -133,7 +112,7 @@
                                 </a>
                             </li>
                             <li class="relative px-2 py-1 ">
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href=" #">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href="/alumnos">
                                     <svg height="24px" width="24px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#ffffff">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -153,7 +132,7 @@
                                 </a>
                             </li>
                             <li class="relative px-2 py-1 ">
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href=" #">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href="/clases">
                                     <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 29.936 29.936" xml:space="preserve" stroke="#ffffff" stroke-width="1.4968">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -224,7 +203,7 @@
                                 </a>
                             </li>
                             <li class="relative px-2 py-1" x-data="{ Open : false  }">
-                                <div class="inline-flex items-center justify-between w-full text-base font-semibold transition-colors duration-150 text-gray-500  hover:text-yellow-400 cursor-pointer" x-on:click="Open = !Open">
+                                <a class="inline-flex items-center justify-between w-full text-base font-semibold transition-colors duration-150 text-gray-500  hover:text-yellow-400 cursor-pointer" href='/maestros' x-on:click="Open = !Open">
                                     <span class="inline-flex items-center  text-sm font-semibold text-white hover:text-green-400">
                                         <svg fill="#ffffff" height="24px" width="24px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.999 511.999" xml:space="preserve" stroke="#ffffff" stroke-width="5.1199900000000005">
                                             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -254,10 +233,10 @@
                                         </svg>
                                         <span class="ml-4">MAESTROS</span>
                                     </span>
-                                </div>
+                                </a>
                             </li>
                             <li class="relative px-2 py-1 ">
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href=" #">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href="/alumnos">
                                     <svg height="24px" width="24px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#ffffff">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -277,7 +256,7 @@
                                 </a>
                             </li>
                             <li class="relative px-2 py-1 ">
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href=" #">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href="/clases">
                                     <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 29.936 29.936" xml:space="preserve" stroke="#ffffff" stroke-width="1.4968">
                                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -503,15 +482,17 @@
                                                                                     ?>
                                                                                 </div>
                                                                             </td>
+                                                                            <!--<button onclick="openModal(true)">Abrir Modal</button>-->
                                                                             <td class="px-6 py-3 whitespace-no-wrap text-sm leading-5">
                                                                                 <div class="flex space-x-4" id="open-btn">
-                                                                                    <!-- href="/permisos/edit?id=<?= $permiso["id"] ?> -->
+                                                                                    <!-- href="/permisos/edit?id=<?= $permiso["id"] ?>" -->
                                                                                     <a class="text-blue-500 hover:text-blue-600" href="/permisos/edit?id=<?= $permiso["id"] ?>">
                                                                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                                                                         </svg>
                                                                                         <p>Edit</p>
                                                                                     </a>
+                                                                                    </button>
                                                                                     <!--<a href="#" class="text-red-500 hover:text-red-600">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -526,6 +507,83 @@
                                                                     ?>
                                                                 </tbody>
                                                             </table>
+
+                                                            <!-- MODAL EDICION DE PERMISOS -->
+                                                            <!-- Overlay -->
+                                                            <div id="modal_overlay" class="hidden absolute inset-0 bg-black bg-opacity-30 h-screen w-full flex justify-center items-center md:items-center pt-10 px-20 md:pt-0 md:px-5">
+
+                                                                <!-- MODAL -->
+                                                                <div id="modal" class="opacity-0 relative w-10/12 md:w-1/2 h-1/2 md:h-2/4 bg-white rounded-xl shadow-lg">
+
+                                                                    <!-- Button Clase -->
+                                                                    <button onclick="openModal(false)" class="absolute -top-3 -right-3 bg-red-500 hover:bg-red-500 text-2x1 w-10 h-10 rounded-full focus:outline-none text-white">
+                                                                        &cross;
+                                                                    </button>
+
+                                                                    <!-- Header -->
+                                                                    <div class="px-4 py-3 border-b border-gray-200">
+                                                                        <h2 class="text-xl font-semibold text-gray-600">Editar permisos</h2>
+                                                                    </div>
+
+                                                                    <!-- Body -->
+                                                                    <div class="w-full p-3">
+                                                                        <form action="/permisos/update" method="post">
+                                                                            <div class="mb-4">
+                                                                                <label class="block text-gray-700 text-sm font-bold mb-2" for="correo">Correo:</label>
+                                                                                <input type="text" id="correo" name="correo" value="<?= $permisos["correo"] ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Correo">
+                                                                            </div>
+                                                                            <div class="mb-4">
+                                                                                <label class="block text-gray-700 text-sm font-bold mb-2" for="rol_id">Rol:</label>
+                                                                                <div class="flex col-span-2 sm:col-span-1">
+                                                                                    <input id="rol_id" name="rol_id" value="<?= $rolPermisoUsuario ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2">
+                                                                                    <label for="rolesUsuarios" id="rol_id" name="rol_id" value="<?= $permisos["rol_id"] ?>" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
+                                                                                    <select id="rolesUsuarios" name="rolesUsuarios" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                                                        <option value="" selected disabled>Seleccione un Rol</option>
+                                                                                        <option value="1">Administrador</option>
+                                                                                        <option value="2">Maestro</option>
+                                                                                        <option value="3">Alumno</option>
+                                                                                    </select>
+
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="mb-4">
+                                                                                <label class="block text-gray-700 text-sm font-bold mb-2" for="estatus">Estatus:</label>
+                                                                                <input type="text" id="estatus" name="estatus" value="<?= $permisos["estatus"] ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Estatus del Usuario">
+                                                                            </div>
+
+                                                                            <div class="flex items-center justify-between">
+                                                                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                                                                                    Guardar cambios
+                                                                                </button>
+                                                                                <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline close-modal">
+                                                                                    <a href="/permisos">Cerrar</a>
+                                                                                </button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+
+                                                                    <!-- Footer -->
+                                                                    <div class="absolute bottom-0 left-0 px-4 py-3 border-t border-gray-200 w-full flex justify-end items-center gap-3">
+                                                                        <button class="bg-green-400 hover:bg-green-600 px-4 py-2 rounded text-white focus:outline-none text-md">Guardar cambios</button>
+                                                                        <button onclick="openModal(false)" class="bg-red-400 hover:bg-red-600 px-4 py-2 rounded text-white focus:outline-none text-md">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <script>
+                                                                const modal_overlay = document.querySelector('#modal_overlay');
+                                                                const modal = document.querySelector('#modal');
+
+                                                                function openModal(value) {
+                                                                    if (value) {
+                                                                        modal_overlay.classList.remove('hidden')
+                                                                        modal.classList.remove('opacity-0')
+                                                                    } else {
+                                                                        modal_overlay.classList.add('hidden')
+                                                                        modal.classList.add('opacity-0')
+                                                                    }
+                                                                }
+                                                            </script>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -540,77 +598,6 @@
             </main>
         </div>
     </div>
-
-    <div id="modalEditarPermisos">
-        <?php
-        include $_SERVER["DOCUMENT_ROOT"] . "../views/permisos/edit.php";
-        ?>
-    </div>
-
-    <!-- Main modal -->
-    <div id="crud-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
-        <div class="relative p-4 w-full max-w-md max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <!-- Modal header -->
-                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                        Create New Product
-                    </h3>
-                    <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="crud-modal">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <form class="p-4 md:p-5">
-                    <div class="grid gap-4 mb-4 grid-cols-2">
-                        <div class="col-span-2">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                            <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Type product name" required="">
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
-                            <input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="$2999" required="">
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
-                            <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected="">Select category</option>
-                                <option value="TV">TV/Monitors</option>
-                                <option value="PC">PC</option>
-                                <option value="GA">Gaming/Console</option>
-                                <option value="PH">Phones</option>
-                            </select>
-                        </div>
-                        <div class="col-span-2">
-                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Description</label>
-                            <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write product description here"></textarea>
-                        </div>
-                    </div>
-                    <button type="button" id="ok-btn" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-                        </svg>
-                        Add new product
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Script prueba para ocultar un div-->
-    <script>
-        function div_permisos() {
-            if ($ocultar_div_permisos = "hidden") {
-                $ocultar_div_permisos = "";
-            } else {
-                $ocultar_div_permisos = "hidden";
-            }
-        }
-    </script>
 
     <script>
         function data() {
