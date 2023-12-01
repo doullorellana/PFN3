@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2023 a las 20:06:28
+-- Tiempo de generación: 01-12-2023 a las 11:21:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -119,13 +119,15 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `dni`, `nombre`, `correo`, `password`, `direccion`, `fecha_nac`, `clase_id`, `rol_id`, `estatus`) VALUES
-(1, '0301198100068', 'Doull Orellana', 'alumno@alumno', 'alumno', 'Comayagua, Comayagua, Honduras', '1981-01-05', NULL, 2, 1),
+(1, '0301198100068', 'Doull Orellana', 'alumno@alumno', 'alumno', 'Comayagua, Comayagua, Honduras', '1981-01-05', NULL, 3, 1),
 (2, '0303199006421', 'Carlos Romero', 'alumno2@alumno', 'alumno', 'San Pedro Sula, Cortes, Honduras', '1990-05-13', NULL, 3, 0),
-(3, '1234567890', 'Diego Huarsaya', 'maestro@maestro', 'maestro', 'Lima Perú', '2001-06-25', 5, 2, 1),
+(3, '1234567890', 'Diego Huarsaya', 'maestro@maestro', 'maestro', 'Lima, Perú', '2001-06-25', 5, 2, 1),
 (4, '0987654321', 'Harold Carazas', 'admin@admin', 'admin', 'Londres, Inglaterra', '2003-08-17', NULL, 1, 1),
 (5, '0504199512345', 'German Fernandez', 'alumno3@alumno', 'alumno3', 'Choluteca, Honduras', '1995-12-24', NULL, 3, 1),
 (6, '0415200054321', 'Francisco Perez', 'alumno4@alumno', 'alumno4', 'Tegucigalpa MDC Honduras', '2005-05-26', NULL, 3, 1),
-(7, '6789012345', 'Niver Copa', 'maestro2@maestro', 'maestro', 'Tokio, Japon', '1984-03-14', 6, 2, 0);
+(7, '6789012345', 'Niver Copa', 'maestro2@maestro', 'maestro', 'Tokio, Japon', '1984-03-14', 6, 2, 0),
+(8, '4561237890', 'Carlos Navarro', 'maestro3@maestro', 'maestro', 'Antofagasta, Chile', '2000-05-24', NULL, 2, 1),
+(9, '9871236540', 'Francisco Morazan', 'maestro4@maestro', 'maestro', 'Francisco Morazan, Honduras', '1792-10-03', NULL, 2, 1);
 
 --
 -- Índices para tablas volcadas
@@ -186,7 +188,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
