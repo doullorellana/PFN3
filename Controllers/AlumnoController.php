@@ -15,7 +15,7 @@ class AlumnoController
      */
     public function index()
     {
-        $usuarios= $this->model->all();
+        $alumnos= $this->model->allAlumnos();
 
         include $_SERVER["DOCUMENT_ROOT"] . "../views/alumnos/read.php";
     }
@@ -33,7 +33,7 @@ class AlumnoController
      */
     public function edit($id)
     {
-        $usuarios = $this->model->find($id);
+        $alumnos = $this->model->find($id);
 
         include $_SERVER["DOCUMENT_ROOT"] . "../views/alumnos/edit.php";
     }

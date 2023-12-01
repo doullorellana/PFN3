@@ -30,8 +30,8 @@
 
     <div class="flex h-screen bg-gray-800 " :class="{ 'overflow-hidden': isSideMenuOpen }">
 
-         <!-- Desktop sidebar -->
-         <aside class="z-20 flex-shrink-0 hidden w-60 pl-2 overflow-y-auto bg-gray-800 md:block">
+        <!-- Desktop sidebar -->
+        <aside class="z-20 flex-shrink-0 hidden w-60 pl-2 overflow-y-auto bg-gray-800 md:block">
             <div>
                 <div class="text-white">
                     <div class="flex p-2  bg-gray-800">
@@ -233,7 +233,7 @@
                                         </svg>
                                         <span class="ml-4">MAESTROS</span>
                                     </span>
-                                            </a>
+                                </a>
                             </li>
                             <li class="relative px-2 py-1 ">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500" href="/alumnos">
@@ -394,17 +394,27 @@
                                                                         </th>
                                                                         <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                                             <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">DNI</span>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
+                                                                                <span class="mr-2">Nombre</span>
+                                                                            </div>
+                                                                        </th>
+                                                                        <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                                                                            <div class="flex cursor-pointer">
                                                                                 <span class="mr-2">Correo</span>
                                                                             </div>
                                                                         </th>
                                                                         <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                                             <div class="flex cursor-pointer">
-                                                                                <span class="mr-2">Permiso</span>
+                                                                                <span class="mr-2">Dirección</span>
                                                                             </div>
                                                                         </th>
                                                                         <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                                                                             <div class="flex cursor-pointer">
-                                                                                <span class="mr-2">Estatus</span>
+                                                                                <span class="mr-2">Fecha Nacimiento</span>
                                                                             </div>
                                                                         </th>
                                                                         <th class="px-6 py-3 bg-gray-50 text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
@@ -421,83 +431,46 @@
                                                                 </thead>
                                                                 <tbody class="bg-white divide-y divide-gray-200">
                                                                     <?php
-                                                                    //var_dump($usuarios);
-                                                                    foreach ($permisos as $permiso) {
-                                                                        switch ($permiso["rol_id"]) {
-                                                                            case 1:
-                                                                                $rol = "Admin";
-                                                                                $estilo = "bg-orange-500 text-white rounded-full px-2 py-0.5";
-                                                                                break;
-                                                                            case 2:
-                                                                                $rol = "Maestro";
-                                                                                $estilo = "bg-green-500 text-white rounded-full px-2 py-0.5";
-                                                                                break;
-                                                                            case 3:
-                                                                                $rol = "Alumno";
-                                                                                $estilo = "bg-zinc-400 text-white rounded-full px-2 py-0.5";
-                                                                                break;
-                                                                        }
-                                                                        $status = $permiso["estatus"] == 1 ? "Activo" : "Inactivo";
+                                                                    //var_dump($alumnos);
+                                                                    foreach ($alumnos as $alumno) {
 
                                                                     ?>
                                                                         <tr>
                                                                             <td class="px-6 py-3 whitespace-no-wrap text-md leading-5">
-                                                                                <p><?= $permiso["id"] ?></p>
+                                                                                <p><?= $alumno["id"] ?></p>
                                                                             </td>
                                                                             <td class="px-6 py-3 whitespace-no-wrap text-md leading-5">
-                                                                                <p><?= $permiso["correo"] ?></p>
-                                                                                <p class="text-xs text-gray-400"><?= $permiso["nombre"] ?></p>
+                                                                                <p><?= $alumno["dni"] ?></p>
                                                                             </td>
-                                                                            <td class="px-6 py-3 whitespace-no-wrap text-center text-sm leading-5">
-                                                                                <p class="<?= $estilo ?>"><?= $rol ?></p>
+                                                                            <td class="px-6 py-3 whitespace-no-wrap text-md leading-5">
+                                                                                <p><?= $alumno["nombre"] ?></p>
+                                                                                <!--<p class="text-xs text-gray-400"><?= $permiso["nombre"] ?></p>-->
                                                                             </td>
-                                                                            <td class="px-6 py-3 whitespace-no-wrap text-sm leading-5">
-                                                                                <div class="flex text-green-500">
-                                                                                    <?php
-                                                                                    if ($permiso["estatus"] == 1) {
-
-                                                                                    ?>
-                                                                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                                                                        </svg>
-                                                                                        <p class="ml-2"><?= $status ?></p>
-
-                                                                                    <?php
-                                                                                    }
-                                                                                    if (($permiso["estatus"] == 0)) {
-                                                                                    ?>
-                                                                                        <svg width="24px" height="24px" viewBox="0 0 1024.00 1024.00" fill="#ff0000" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ff0000" stroke-width="20.48">
-                                                                                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                                                                                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="6.144"></g>
-                                                                                            <g id="SVGRepo_iconCarrier">
-                                                                                                <path d="M512 897.6c-108 0-209.6-42.4-285.6-118.4-76-76-118.4-177.6-118.4-285.6 0-108 42.4-209.6 118.4-285.6 76-76 177.6-118.4 285.6-118.4 108 0 209.6 42.4 285.6 118.4 157.6 157.6 157.6 413.6 0 571.2-76 76-177.6 118.4-285.6 118.4z m0-760c-95.2 0-184.8 36.8-252 104-67.2 67.2-104 156.8-104 252s36.8 184.8 104 252c67.2 67.2 156.8 104 252 104 95.2 0 184.8-36.8 252-104 139.2-139.2 139.2-364.8 0-504-67.2-67.2-156.8-104-252-104z" fill=""></path>
-                                                                                                <path d="M707.872 329.392L348.096 689.16l-31.68-31.68 359.776-359.768z" fill=""></path>
-                                                                                                <path d="M328 340.8l32-31.2 348 348-32 32z" fill=""></path>
-                                                                                            </g>
-                                                                                        </svg>
-                                                                                        <p class="ml-2 text-red-500 hover:text-red-600"><?= $status ?></p>
-
-                                                                                    <?php
-                                                                                    }
-                                                                                    ?>
-                                                                                </div>
+                                                                            <td class="px-6 py-3 whitespace-no-wrap text-md leading-5">
+                                                                                <p><?= $alumno["correo"] ?></p>
+                                                                            </td>
+                                                                            <td class="px-6 py-3 whitespace-no-wrap text-md leading-5">
+                                                                                <p><?= $alumno["direccion"] ?></p>
+                                                                            </td>
+                                                                            <td class="px-6 py-3 whitespace-no-wrap text-md leading-5">
+                                                                                <p><?= $alumno["fecha_nac"] ?></p>
                                                                             </td>
                                                                             <td class="px-6 py-3 whitespace-no-wrap text-sm leading-5">
                                                                                 <div class="flex space-x-4" id="open-btn">
-                                                                                    <!-- href="/permisos/edit?id=<?= $permiso["id"] ?>" -->
-                                                                                    <a class="text-blue-500 hover:text-blue-600" href="/permisos/edit?id=<?= $permiso["id"] ?>">
+                                                                                    <!-- href="/permisos/edit?id=<?= $alumno["id"] ?>" -->
+                                                                                    <a class="text-blue-500 hover:text-blue-600" href="/alumnos/edit?id=<?= $alumno["id"] ?>">
                                                                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                                                                         </svg>
                                                                                         <p>Edit</p>
                                                                                     </a>
                                                                                     </button>
-                                                                                    <!--<a href="#" class="text-red-500 hover:text-red-600">
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                                            </svg>
-                                                                            <p>Delete</p>
-                                                                        </a>-->
+                                                                                    <a href="/alumnos/delete?id=<?= $alumno["id"] ?>" class="text-red-500 hover:text-red-600">
+                                                                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                                        </svg>
+                                                                                        <p>Delete</p>
+                                                                                    </a>
                                                                                 </div>
                                                                             </td>
                                                                         </tr>

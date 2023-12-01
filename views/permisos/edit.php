@@ -21,7 +21,7 @@ var_dump($rolPermisoUsuario);
                 <form id="editPermisos" action="/permisos/update" method="post">
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="correo">Correo:</label>
-                        <input type="text" id="correo" name="correo" value="<?= $permisos["correo"] ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Correo">
+                        <input type="text" id="correo" name="correo" disabled value="<?= $permisos["correo"] ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Correo">
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="rol_id">Rol:</label>
@@ -65,10 +65,4 @@ var_dump($rolPermisoUsuario);
         //$permisos["rol_id"] = valorSeleccionado;
     });
 
-     // Agregar un evento al formulario para asegurarse de que el valor se actualice antes del envío
-     document.getElementById('editPermisos').addEventListener('submit', function(){
-        var valorSeleccionado = document.getElementById('rolesUsuarios').value;
-        document.getElementById('rol_id').value = valorSeleccionado;
-        //$permisos["rol_id"] = valorSeleccionado;
-    });
 </script>

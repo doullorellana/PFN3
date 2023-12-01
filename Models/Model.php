@@ -38,6 +38,52 @@ class Model
      *
      * @return array Arreglo con todos los registro de la tabla.
      */
+    public function allMaestros()
+    {
+        $queryMaestros = 'select u.id, u.nombre as nombre_maestro, u.correo, u.direccion, u.fecha_nac, u.rol_id, u.clase_id, u.estatus, c.id as id_clases, c.nombre as nombre_clase  from usuarios u
+        left join clases c on c.id = u.clase_id
+        where u.rol_id = 2';
+        $res = $this->db->query($queryMaestros);
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+    }
+
+    /**
+     * Método para todos los registros de la tabla.
+     *
+     * @return array Arreglo con todos los registro de la tabla.
+     */
+    public function allAlumnos()
+    {
+        $queryAlumnos = 'select u.id, u.dni, u.nombre, u.correo, u.direccion, u.fecha_nac, u.rol_id, u.clase_id, u.estatus  from usuarios u
+        where u.rol_id = 3';
+        $res = $this->db->query($queryAlumnos);
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+    }
+
+    /**
+     * Método para todos los registros de la tabla.
+     *
+     * @return array Arreglo con todos los registro de la tabla.
+     */
+    public function allClases()
+    {
+        $queryClases = 'select u.id, u.nombre as nombre_maestro, u.correo, u.direccion, u.fecha_nac, u.rol_id, u.clase_id, u.estatus  from usuarios u
+        where u.rol_id = 3';
+        $res = $this->db->query($queryClases);
+        $data = $res->fetch_all(MYSQLI_ASSOC);
+
+        return $data;
+    }
+
+    /**
+     * Método para todos los registros de la tabla.
+     *
+     * @return array Arreglo con todos los registro de la tabla.
+     */
     public function all_users_count()
     {
         $res = $this->db->query("select count(*) from usuarios");
@@ -53,6 +99,7 @@ class Model
      */
     public function all_users_admin()
     {
+
         $res = $this->db->query("select count(*) from usuarios u
         inner join roles r on u.rol_id = r.id
         where r.nombre = 'Admin'");

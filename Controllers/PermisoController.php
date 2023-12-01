@@ -35,7 +35,7 @@ class PermisoController
      */
     public function update($request)
     {
-        var_dump($request);
+        
         $this->model->update($request);
 
         header("Location: /permisos");

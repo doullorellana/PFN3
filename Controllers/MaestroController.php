@@ -15,7 +15,7 @@ class MaestroController
      */
     public function index()
     {
-        $maestros= $this->model->all();
+        $maestros= $this->model->allMaestros();
 
         include $_SERVER["DOCUMENT_ROOT"] . "../views/maestros/read.php";
     }
