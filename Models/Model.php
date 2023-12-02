@@ -201,7 +201,9 @@ class Model
         }
 
         session_start();
-        $query = "update {$this->table} set " . implode(", ", $updatePairs) . "where id = {$_SESSION["usuarioid_edit"]}";
+        // var_dump($_SESSION["usuarioid_edit"]);
+        $query = "update {$this->table} set " . implode(", ", $updatePairs) . " where id = {$_SESSION["usuarioid_edit"]}";
+        // var_dump($query);
         $this->db->query($query);
     }
 

@@ -46,6 +46,7 @@
                 break;
 
             case '/permisos/update':
+                // var_dump($_POST);
                 $permisoController->update($_POST);
                 break;
 

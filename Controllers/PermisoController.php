@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER["DOCUMENT_ROOT"] . "/models/User.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/Models/User.php";
 
 class PermisoController
 {
@@ -35,6 +35,7 @@ class PermisoController
      */
     public function update($request)
     {
+        // var_dump($request);
         
         $this->model->update($request);
 

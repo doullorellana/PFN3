@@ -6,7 +6,7 @@ session_start();
 $_SESSION["usuarioid_edit"] = $permisos["id"];
 
 $rolPermisoUsuario = $permisos["rol_id"];
-var_dump($rolPermisoUsuario);
+var_dump($permisos["id"]);
 ?>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -26,9 +26,9 @@ var_dump($rolPermisoUsuario);
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="rol_id">Rol:</label>
                         <div class="flex col-span-2 sm:col-span-1">
-                            <input id="rol_id" name="rol_id" value="<?= intval($rolPermisoUsuario) ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2">
+                            <input id="rol_id" name="" value="<?= intval($rolPermisoUsuario) ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2" placeholder="Rol del Usuario">
 
-                            <select id="rolesUsuarios" name="rolesUsuarios" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <select id="rolesUsuarios" name="rol_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option value='' selected disabled>Seleccione un Rol</option>
                                 <option value='1'>Administrador</option>
                                 <option value='2'>Maestro</option>
@@ -38,7 +38,15 @@ var_dump($rolPermisoUsuario);
                     </div>
                     <div class="mb-4">
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="estatus">Estatus:</label>
-                        <input type="text" id="estatus" name="estatus" value="<?= $permisos["estatus"] ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Estatus del Usuario">
+                        <div class="flex col-span-2 sm:col-span-1">
+                            <input type="text" id="estatus" name="" value="<?= $permisos["estatus"] ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-2" placeholder="Estatus del Usuario">
+
+                            <select id="estatusUsuarios" name="estatus" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <option value='' selected disabled>Seleccione un Estatus</option>
+                                <option value='1'>Activo</option>
+                                <option value='0'>Inactivo</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="flex items-center justify-between">
@@ -57,12 +65,17 @@ var_dump($rolPermisoUsuario);
 
 <!-- Cambiando los roles del menú desplegable -->
 <script type="text/javascript">
-    // Agregar comentario explicativo
     // Actualizar el valor del input cuando cambia el valor del select
     document.getElementById('rolesUsuarios').addEventListener('change', function() {
-        var valorSeleccionado = this.value;
-        document.getElementById('rol_id').value = valorSeleccionado;
-        //$permisos["rol_id"] = valorSeleccionado;
+        var valorSeleccionadoRol = this.value;
+        document.getElementById('rol_id').value = valorSeleccionadoRol;
+        $permisos["rol_id"] = valorSeleccionado;
     });
 
+    // Actualizar el valor del input cuando cambia el valor del select
+    document.getElementById('estatusUsuarios').addEventListener('change', function() {
+        var valorSeleccionadoEstatus = this.value;
+        document.getElementById('estatus').value = valorSeleccionadoEstatus;
+        //$permisos["rol_id"] = valorSeleccionado;
+    });
 </script>
