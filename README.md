@@ -101,8 +101,14 @@ Tenemos 5 categorías a calificar:
 ### Pantalla - Login Responsiva
 ![Login.png](./assets/Login.PNG)
 
-### Panel Administrativo - Home Responsiva
-![AdminHome.png](./assets/AdminHome.PNG)
+### Panel Administrativo - Home Responsivo
+![AdminHome.png](./assets/AdminHome.png)
+
+### Panel Administrativo - Maestros Responsivo
+![AdminMaestros.png](./assets/AdminMaestros.PNG)
+
+### Panel Administrativo - Alumnos Responsivo
+![AdminAlumnos.png](./assets/AdminAlumnos.PNG)
 
 
 ## ACUMULADO DE CATEGORÍAS
