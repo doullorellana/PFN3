@@ -102,7 +102,7 @@ Tenemos 5 categorías a calificar:
 ![Login.png](./assets/Login.PNG)
 
 ### Panel Administrativo - Home Responsiva
-![Admin_Home.png](./assets/Admin_Home.PNG)
+![AdminHome.png](./assets/AdminHome.PNG)
 
 
 ## ACUMULADO DE CATEGORÍAS
