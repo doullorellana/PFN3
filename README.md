@@ -98,8 +98,11 @@ Tenemos 5 categorías a calificar:
 ### Diagrama ER de la BDD
 ![DiagramaER.png](./assets/DiagramaER.png)
 
-### Pantalla Login Responsiva
+### Pantalla - Login Responsiva
 ![Login.png](./assets/Login.PNG)
+
+### Panel Administrativo - Home Responsiva
+![Admin_Home.png](./assets/Admin_Home.PNG)
 
 
 ## ACUMULADO DE CATEGORÍAS
