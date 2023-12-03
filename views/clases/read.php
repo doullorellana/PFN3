@@ -365,7 +365,17 @@
             </header>
             <main class="">
                 <div class="grid mb-4 pb-10 px-8 mx-4 rounded-3xl bg-gray-100 border-4 border-green-400">
-                    <h1 class="mt-5 mx-5 text-xl">Lista de Clases</h1>
+                <div class="flex justify-between items-end">
+                        <div>
+                            <h1 class="mt-5 mx-5 text-xl">Lista de Clases</h1>
+                        </div>
+                        <div>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button">Agregar Clase</button>
+                        </div>
+
+
+
+                    </div>
                     <div class="w-full max-w-screen-xl mx-auto">
 
                     </div>

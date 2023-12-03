@@ -52,8 +52,8 @@
 
                 // Opciones correspondiente a la gestion de los Maestros
             case '/maestros/delete':
-                break;
                 $maestroController->delete($_POST["id"]);
+                break;
 
             case '/maestros/create':
                 $maestroController->store($_POST);
@@ -102,6 +102,7 @@
             case '/index.php':
                 $loginController->index();
                 break;
+
             case '/dashboard':
                 $loginController->dashboard();
                 break;
