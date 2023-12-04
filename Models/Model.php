@@ -71,8 +71,20 @@ class Model
      */
     public function allClases()
     {
-        $queryClases = 'select u.id, u.nombre as nombre_maestro, u.correo, u.direccion, u.fecha_nac, u.rol_id, u.clase_id, u.estatus  from usuarios u
-        where u.rol_id = 3';
+        $queryClases = 'select
+        c.id as clase_id,
+        c.nombre as clase_nombre,
+        u.nombre as maestro_nombre,
+        count(i.alumno_id) as inscritos
+    from
+        clases c
+    left join inscripciones i on
+        c.id = i.clase_id
+    left join usuarios u on
+        u.clase_id = c.id
+    group by
+        c.id,
+        c.nombre';
         $res = $this->db->query($queryClases);
         $data = $res->fetch_all(MYSQLI_ASSOC);
 

@@ -370,11 +370,14 @@
                             <h1 class="mt-5 mx-5 text-xl">Lista de Alumnos</h1>
                         </div>
                         <div>
-                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="button">Agregar Alumno</button>
+                            <form action="/alumnos/create">
+                                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
+                                  
+                                        <p>Agregar Alumno</p>
+                             
+                                </button>
+                            </form>
                         </div>
-
-
-
                     </div>
                     <div class="w-full max-w-screen-xl mx-auto">
 

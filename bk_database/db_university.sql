@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2023 a las 13:01:09
+-- Tiempo de generación: 04-12-2023 a las 11:23:37
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.0.28
 
@@ -120,17 +120,15 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `dni`, `nombre`, `correo`, `password`, `direccion`, `fecha_nac`, `clase_id`, `rol_id`, `estatus`) VALUES
-(1, '0301198100068', 'Doull Orellana', 'alumno@alumno', 'alumno', 'Comayagua, Comayagua, Honduras', '1981-01-05', NULL, 2, 1),
+(1, '0301198100068', 'Doull Orellana', 'alumno@alumno', 'alumno', 'Comayagua, Comayagua, Honduras', '1981-01-05', NULL, 3, 1),
 (2, '0303199006421', 'Carlos Romero', 'alumno2@alumno', 'alumno', 'San Pedro Sula, Cortes, Honduras', '1990-05-13', NULL, 3, 1),
-(3, '1234567890', 'Diego Huarsaya', 'maestro@maestro', 'maestro', 'Lima, Perú', '2001-06-25', 5, 2, 0),
+(3, '1234567890', 'Diego Huarsaya', 'maestro@maestro', 'maestro', 'Lima, Perú', '2001-06-25', 12, 2, 0),
 (4, '0987654321', 'Harold Carazas', 'admin@admin', 'admin', 'Londres, Inglaterra', '2003-08-17', NULL, 1, 1),
 (5, '0504199512345', 'German Fernandez', 'alumno3@alumno', 'alumno3', 'Choluteca, Honduras', '1995-12-24', NULL, 3, 1),
 (6, '0415200054321', 'Francisco Perez', 'alumno4@alumno', 'alumno4', 'Tegucigalpa MDC Honduras', '2005-05-26', NULL, 3, 1),
 (7, '6789012345', 'Niver Copa', 'maestro2@maestro', 'maestro', 'Tokio, Japon', '1984-03-14', 6, 2, 0),
 (8, '4561237890', 'Carlos Navarro', 'maestro3@maestro', 'maestro', 'Antofagasta, Chile', '2000-05-24', NULL, 2, 1),
 (9, '9871236540', 'Francisco Morazan', 'maestro4@maestro', 'maestro', 'Francisco Morazan, Honduras', '1792-10-03', NULL, 2, 1),
-(13, '0000111100', 'Eliminar Maestro', 'maestro5@maestro', 'maestro', 'Eliminar Maestro', '2023-12-03', NULL, 2, 0),
-(15, '1111000001', 'Eliminar Alumno', 'alumno5@alumno', 'alumno', 'Eliminar Alumno', '2023-12-03', NULL, 3, 1),
 (91, '1301349939772', 'Kessie Blake', 'integer.urna@icloud.com', 'alumno', 'Ap #873-9329 Sed Street,Italy', '2001-01-17', 4, 3, 1),
 (92, '1301916168171', 'Sheila George', 'varius.ultrices.mauris@google.edu', 'alumno', '3172 Mauris, Avenue, United States', '1999-06-10', 5, 3, 1),
 (93, '1301283370401', 'James Booth', 'id@aol.couk', 'alumno', 'Ap #788-9553 Lobortis. Street, Singapore', '1990-05-27', 7, 3, 1),
@@ -175,7 +173,12 @@ INSERT INTO `usuarios` (`id`, `dni`, `nombre`, `correo`, `password`, `direccion`
 (192, '1301511620938', 'Paul Hudson', 'a2@hotmail.edu', 'alumno', 'Ap #941-4211 Nullam Rd., Peru', '2000-01-12', 2, 3, 1),
 (193, '1301916424757', 'Harrison Barton', 'lacus2@yahoo.net', 'alumno', 'P.O. Box 997, 194 Aliquam Avenue, Singapore', '1984-05-27', 6, 3, 1),
 (194, '1301757655075', 'Whitney Rowe', 'nec2.eleifend@icloud.com', 'alumno', 'P.O. Box 321, 4184 Sapien, Avenue, United Kingdom', '1991-11-02', 7, 2, 1),
-(195, '1301228849433', 'Rudyard Briggs', 'orci2.consectetuer@protonmail.net', 'alumno', '308-2309 Vitae Av., Pakistan', '1994-01-18', 4, 3, 1);
+(195, '1301228849433', 'Rudyard Briggs', 'orci2.consectetuer@protonmail.net', 'alumno', '308-2309 Vitae Av., Pakistan', '1994-01-18', 4, 3, 1),
+(198, '222200000222', 'Eliminar Maestro 2', 'alumno7@alumno', 'maestro', 'Primaria sin llamamientos por cubrir', '2023-12-01', 13, 2, 1),
+(199, '0301999944444', 'Carlos Flores', 'maestro10@maestro', 'maestro', 'Comayagua, Honduras', '2009-03-04', 11, 2, 1),
+(200, '0701888835678', 'Gustavo Calderon Gutierrez', 'maestro11@maestro', 'maestro', 'La Paz, Honduras', '2007-07-17', 7, 2, 1),
+(201, '010101010101', 'Eliminar Maestro', 'maestro5@maestro', 'maestro', 'Eliminar Maestro', '2023-12-02', NULL, 2, 1),
+(202, '0987612345', 'Federico Caal Poujol', 'alumno10@alumno', 'alumno', 'San Pedro Sula, Honduras', '2010-04-15', NULL, 3, 1);
 
 --
 -- Índices para tablas volcadas
@@ -236,7 +239,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
 
 --
 -- Restricciones para tablas volcadas

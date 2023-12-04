@@ -104,11 +104,17 @@ Tenemos 5 categorías a calificar:
 ### Panel Administrativo - Home Responsivo
 ![AdminHome.png](./assets/AdminHome.png)
 
+### Panel Administrativo - Permisos de Usuario Responsivo
+![AdminPermisosUsuario.png](./assets/AdminPermisosUsuario.PNG)
+
 ### Panel Administrativo - Maestros Responsivo
 ![AdminMaestros.png](./assets/AdminMaestros.PNG)
 
 ### Panel Administrativo - Alumnos Responsivo
 ![AdminAlumnos.png](./assets/AdminAlumnos.PNG)
+
+### Panel Administrativo - Clases Responsivo
+![AdminClases.png](./assets/AdminClases.PNG)
 
 
 ## ACUMULADO DE CATEGORÍAS

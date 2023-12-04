@@ -15,7 +15,7 @@ class ClaseController
      */
     public function index()
     {
-        $clases= $this->model->all();
+        $clases= $this->model->allClases();
 
         include $_SERVER["DOCUMENT_ROOT"] . "../views/clases/read.php";
     }
